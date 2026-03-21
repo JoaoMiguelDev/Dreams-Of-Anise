@@ -44,17 +44,33 @@ public partial class Anise : CharacterBody2D
         else if (Input.IsActionJustPressed("MoveLeft")) { direction = Vector2.Left;  ray = Left;  }
         else if (Input.IsActionJustPressed("MoveRight")){ direction = Vector2.Right; ray = Right; }
 
-        if (direction != Vector2.Zero && ray != null && !ray.IsColliding())
-        {
-            IsMoving = true;
-            TargetPosition = GlobalPosition + direction * TileSize;
-        }
+        // if (direction != Vector2.Zero && ray != null && !ray.IsColliding())
+        // {
+        //     IsMoving = true;
+        //     TargetPosition = GlobalPosition + direction * TileSize;
+        // }
+
+		if (direction == Vector2.Zero || ray == null) return;
+
+		if (ray.IsColliding())
+    	{        
+        	if (ray.GetCollider() is Statue statue)
+        	{
+            	statue.TryPush(direction);
+            }
+        	
+        	return; 
+        	
+    	}
+
+    	IsMoving = true;
+    	TargetPosition = GlobalPosition + direction * TileSize;
     }
 
 	public void TeleportTo(Vector2 worldPosition)
 	{
 	    GlobalPosition = worldPosition;
-	    TargetPosition = worldPosition; // evita o player "deslizar" após o teleporte
+	    TargetPosition = worldPosition;
 	    IsMoving = false;
 	}	
 
