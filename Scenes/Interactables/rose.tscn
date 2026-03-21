@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://tl5nwgy41swb"]
+
+[ext_resource type="Script" uid="uid://d1pudynbqt7l0" path="res://Scripts/Interactables/Rose.cs" id="1_w5866"]
+[ext_resource type="Texture2D" uid="uid://v177xfvr1rpf" path="res://Assets/Sprites/Interactables/TemplateTeleporter.png" id="2_p5wug"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i5u8"]
+size = Vector2(4, 4)
+
+[node name="Rose" type="Area2D"]
+script = ExtResource("1_w5866")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p5wug")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7i5u8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
