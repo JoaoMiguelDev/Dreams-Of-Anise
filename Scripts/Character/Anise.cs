@@ -7,6 +7,7 @@ public partial class Anise : CharacterBody2D
 	[Export] private RayCast2D Down;
 	[Export] private RayCast2D Left;
 	[Export] private RayCast2D Right;
+	[Signal] public delegate void ActionTakenEventHandler();
 	private float MoveSpeed = 12f;
 	private Vector2 TileSize = new Vector2(16,16);
 	private bool IsMoving = false;
@@ -60,10 +61,10 @@ public partial class Anise : CharacterBody2D
             }
         	
         	return; 
-        	
-    	}
+        }
 
     	IsMoving = true;
+		ActionTakenEmitSignal();
     	TargetPosition = GlobalPosition + direction * TileSize;
     }
 
@@ -73,5 +74,10 @@ public partial class Anise : CharacterBody2D
 	    TargetPosition = worldPosition;
 	    IsMoving = false;
 	}	
+
+	public void ActionTakenEmitSignal()
+	{
+		EmitSignal(SignalName.ActionTaken);
+	}
 
 }

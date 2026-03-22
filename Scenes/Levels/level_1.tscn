@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://dmpi2v7jc6ilt"]
+[gd_scene load_steps=12 format=4 uid="uid://dmpi2v7jc6ilt"]
 
 [ext_resource type="Texture2D" uid="uid://d1mw3n24oxs5n" path="res://Assets/Sprites/Tiles/TemplateTile.png" id="1_4dpyx"]
+[ext_resource type="Script" uid="uid://tp8lsjkt05pb" path="res://Scripts/Levels/Level1.cs" id="1_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://4sys6wjl2opi" path="res://Scenes/Character/anise.tscn" id="2_3mqfk"]
+[ext_resource type="Script" uid="uid://bxpv0l8828d0e" path="res://Scripts/GameManager.cs" id="2_5f3p6"]
 [ext_resource type="Texture2D" uid="uid://ftxi4ekxxc0d" path="res://Assets/Sprites/Tiles/TemplateCollisionTile.png" id="2_iixi8"]
 [ext_resource type="PackedScene" uid="uid://tl5nwgy41swb" path="res://Scenes/Interactables/rose.tscn" id="4_iixi8"]
 [ext_resource type="PackedScene" uid="uid://psmdhubjpoye" path="res://Scenes/Interactables/statue.tscn" id="5_cyadu"]
@@ -23,6 +25,12 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cyadu")
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_xgxfi")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("Lvl", "Player")]
+script = ExtResource("2_5f3p6")
+Lvl = NodePath("..")
+Player = NodePath("../Anise")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
