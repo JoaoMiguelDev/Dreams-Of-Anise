@@ -14,6 +14,10 @@ config/name="DreamsOfAnise"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LevelManager="*res://Scripts/LevelManager.cs"
+
 [display]
 
 window/stretch/mode="viewport"

@@ -1,0 +1,32 @@
+using Godot;
+using System;
+
+public partial class LevelManager : Node
+{
+	public static LevelManager Instance;
+	private string[] Levels = {"res://Scenes/Levels/level_1.tscn"}; //All new levels must be included here. Index 0 must be the main menu.
+	private int CurrentLevel = 0;
+
+    public override void _Ready()
+    {
+       Instance = this;
+    }
+
+	public void ChangeLevel()
+	{
+		CurrentLevel ++;
+
+		if(CurrentLevel >= Levels.Length) //If the number of levels end, goes back to the first item.
+		{
+			ResetLevelIndex();
+		}
+
+		// GetTree().ChangeSceneToFile(Levels[CurrentLevel]);
+		GetTree().CallDeferred("change_scene_to_file", Levels[CurrentLevel]);
+	}
+
+	private void ResetLevelIndex()
+	{
+		CurrentLevel = 0;
+	}
+}
