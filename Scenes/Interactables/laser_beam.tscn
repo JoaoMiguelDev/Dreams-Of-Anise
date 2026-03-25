@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://7nitwbvkyuln"]
+
+[ext_resource type="Script" uid="uid://bkenttrrdqpef" path="res://Scripts/Interactables/LaserBeam.cs" id="1_vhk84"]
+
+[node name="LaserBeam" type="RayCast2D"]
+script = ExtResource("1_vhk84")
+CastSpeed = 800.0

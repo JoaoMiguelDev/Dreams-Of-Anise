@@ -25,12 +25,19 @@ public partial class GameManager : Node
 
 	public void RestartGame()
 	{
-		GetTree().ReloadCurrentScene();
+		// GetTree().ReloadCurrentScene();
+		GetTree().CallDeferred("reload_current_scene"); //Better for avoiding collision and physics problems
 	}
 
 	public void ConsumeAction()
 	{
 		NumOfActions --;
+	}
+
+	public void TakeDamage()
+	{
+		ConsumeAction(); //It will do the same thing as Consume action for now, but will be updated to shake screen and do more stuff
+		CheckCurrentState();
 	}
 
 	private void CheckCurrentState()

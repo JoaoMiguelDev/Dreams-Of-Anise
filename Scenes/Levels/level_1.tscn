@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dmpi2v7jc6ilt"]
+[gd_scene load_steps=15 format=4 uid="uid://dmpi2v7jc6ilt"]
 
 [ext_resource type="Texture2D" uid="uid://d1mw3n24oxs5n" path="res://Assets/Sprites/Tiles/TemplateTile.png" id="1_4dpyx"]
 [ext_resource type="Script" uid="uid://tp8lsjkt05pb" path="res://Scripts/Levels/Level1.cs" id="1_xgxfi"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://tl5nwgy41swb" path="res://Scenes/Interactables/rose.tscn" id="4_iixi8"]
 [ext_resource type="PackedScene" uid="uid://psmdhubjpoye" path="res://Scenes/Interactables/statue.tscn" id="5_cyadu"]
 [ext_resource type="PackedScene" uid="uid://u3oqj4ehea0a" path="res://Scenes/Interactables/portal.tscn" id="8_jv26f"]
+[ext_resource type="PackedScene" uid="uid://c0qj2vx06m0j5" path="res://Scenes/Interactables/thorns.tscn" id="9_rb0md"]
+[ext_resource type="PackedScene" uid="uid://7nitwbvkyuln" path="res://Scenes/Interactables/laser_beam.tscn" id="10_u5ghp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iixi8"]
 texture = ExtResource("1_4dpyx")
@@ -69,3 +71,17 @@ position = Vector2(-72, -8)
 
 [node name="Portal" parent="." instance=ExtResource("8_jv26f")]
 position = Vector2(120, 56)
+
+[node name="Thorns" type="Node2D" parent="."]
+
+[node name="Thorns" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_rb0md")]
+position = Vector2(24, 8)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns2" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_rb0md")]
+position = Vector2(8, -24)
+GameManager = NodePath("../../GameManager")
+
+[node name="LaserBeam" parent="." instance=ExtResource("10_u5ghp")]
+position = Vector2(-122, -8)
+hit_from_inside = true

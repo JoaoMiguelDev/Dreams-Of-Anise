@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0qj2vx06m0j5"]
+
+[ext_resource type="Script" uid="uid://bncibypulfnms" path="res://Scripts/Interactables/Thorns.cs" id="1_f62q0"]
+[ext_resource type="Texture2D" uid="uid://cdcciwg00l6aa" path="res://Assets/Sprites/Interactables/TemplateThorns.png" id="1_qfmb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f62q0"]
+size = Vector2(12, 12)
+
+[node name="Thorns" type="Area2D"]
+script = ExtResource("1_f62q0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qfmb1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f62q0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
