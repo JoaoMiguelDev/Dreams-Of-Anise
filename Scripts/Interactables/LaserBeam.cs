@@ -5,7 +5,8 @@ public partial class LaserBeam : RayCast2D
 {
     [Export] public float MaxLength = 1000.0f;
     [Export] public float CastSpeed = 400.0f;
-
+    [Export] public GameManager GameManager;
+    [Signal] public delegate void PlayerHitEventHandler();
     private Line2D _line;
     private float _currentLength = 0f;
 
@@ -39,7 +40,7 @@ public partial class LaserBeam : RayCast2D
         {
 			if (GetCollider() is Anise)
 			{
-				GD.Print("Morreu");
+				PlayerHitEmitSignal();
 			}
             // Para no ponto de colisão
             endPoint = ToLocal(GetCollisionPoint());
@@ -52,5 +53,10 @@ public partial class LaserBeam : RayCast2D
 
         _line.SetPointPosition(0, Vector2.Zero);
         _line.SetPointPosition(1, endPoint);
+    }
+
+    public void PlayerHitEmitSignal()
+    {
+        EmitSignal(SignalName.PlayerHit);
     }
 }

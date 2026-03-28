@@ -20,6 +20,8 @@ LevelManager="*res://Scripts/LevelManager.cs"
 
 [display]
 
+window/size/viewport_width=620
+window/size/viewport_height=320
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 
