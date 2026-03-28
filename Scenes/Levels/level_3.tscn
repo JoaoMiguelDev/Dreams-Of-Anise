@@ -1,0 +1,222 @@
+[gd_scene load_steps=14 format=4 uid="uid://b4qnx1q1wj5ls"]
+
+[ext_resource type="Script" uid="uid://bu5bscs4y4yoe" path="res://Scripts/Levels/Level3.cs" id="1_4ahh4"]
+[ext_resource type="Script" uid="uid://bxpv0l8828d0e" path="res://Scripts/GameManager.cs" id="2_dl55b"]
+[ext_resource type="Texture2D" uid="uid://d1mw3n24oxs5n" path="res://Assets/Sprites/Tiles/TemplateTile.png" id="3_osqx1"]
+[ext_resource type="Texture2D" uid="uid://ftxi4ekxxc0d" path="res://Assets/Sprites/Tiles/TemplateCollisionTile.png" id="4_sy7oa"]
+[ext_resource type="PackedScene" uid="uid://u3oqj4ehea0a" path="res://Scenes/Interactables/portal.tscn" id="5_md4x4"]
+[ext_resource type="PackedScene" uid="uid://4sys6wjl2opi" path="res://Scenes/Character/anise.tscn" id="6_1hf40"]
+[ext_resource type="PackedScene" uid="uid://tl5nwgy41swb" path="res://Scenes/Interactables/rose.tscn" id="7_13yca"]
+[ext_resource type="PackedScene" uid="uid://psmdhubjpoye" path="res://Scenes/Interactables/statue.tscn" id="8_8dmpc"]
+[ext_resource type="PackedScene" uid="uid://c0qj2vx06m0j5" path="res://Scenes/Interactables/thorns.tscn" id="9_anjjd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxf76"]
+texture = ExtResource("3_osqx1")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ia1lp"]
+sources/0 = SubResource("TileSetAtlasSource_yxf76")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5buja"]
+texture = ExtResource("4_sy7oa")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_wyygt"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_5buja")
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_4ahh4")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("Lvl", "Player")]
+script = ExtResource("2_dl55b")
+Lvl = NodePath("..")
+Player = NodePath("../Anise")
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Tiles"]
+tile_map_data = PackedByteArray("AAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAAAAAAVAAcAAAAAAAAAAAAUAAgAAAAAAAAAAAAVAAgAAAAAAAAAAAATAAkAAAAAAAAAAAAUAAkAAAAAAAAAAAAVAAkAAAAAAAAAAAAUAAoAAAAAAAAAAAATAAoAAAAAAAAAAAASAAoAAAAAAAAAAAASAAkAAAAAAAAAAAARAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAOAAkAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAANAA0AAAAAAAAAAAAOAA0AAAAAAAAAAAANAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAATAA0AAAAAAAAAAAAUAA0AAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAATAAgAAAAAAAAAAAASAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ia1lp")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="Tiles"]
+tile_map_data = PackedByteArray("AAAKAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAUAAAAAAAAAAAATAAUAAAAAAAAAAAAUAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAA0AAAAAAAAAAAAVAA4AAAAAAAAAAAAUAA4AAAAAAAAAAAATAA4AAAAAAAAAAAASAA4AAAAAAAAAAAARAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAOAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAAJAA0AAAAAAAAAAAAIAAwAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAA4AAAAAAAAAAAAIAA0AAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAVAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAVAAsAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAA4AAAAAAAAAAAAWAAoAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_wyygt")
+
+[node name="Portal" parent="." instance=ExtResource("5_md4x4")]
+position = Vector2(344, 216)
+
+[node name="Anise" parent="." instance=ExtResource("6_1hf40")]
+z_index = 5
+position = Vector2(120, 72)
+
+[node name="Roses" type="Node2D" parent="."]
+
+[node name="Rose" parent="Roses" node_paths=PackedStringArray("Destination") instance=ExtResource("7_13yca")]
+position = Vector2(184, 120)
+Destination = NodePath("../Rose2")
+
+[node name="Rose2" parent="Roses" node_paths=PackedStringArray("Destination") instance=ExtResource("7_13yca")]
+position = Vector2(344, 136)
+Destination = NodePath("../Rose")
+
+[node name="Rose3" parent="Roses" node_paths=PackedStringArray("Destination") instance=ExtResource("7_13yca")]
+position = Vector2(264, 168)
+Destination = NodePath("../Rose9")
+
+[node name="Rose4" parent="Roses" node_paths=PackedStringArray("Destination") instance=ExtResource("7_13yca")]
+position = Vector2(232, 168)
+Destination = NodePath("../Rose5")
+
+[node name="Rose5" parent="Roses" node_paths=PackedStringArray("Destination") instance=ExtResource("7_13yca")]
+position = Vector2(152, 168)
+Destination = NodePath("../Rose4")
+
+[node name="Rose6" parent="Roses" node_paths=PackedStringArray("Destination") instance=ExtResource("7_13yca")]
+position = Vector2(200, 104)
+Destination = NodePath("../Rose7")
+
+[node name="Rose7" parent="Roses" node_paths=PackedStringArray("Destination") instance=ExtResource("7_13yca")]
+position = Vector2(312, 104)
+Destination = NodePath("../Rose6")
+
+[node name="Rose8" parent="Roses" node_paths=PackedStringArray("Destination") instance=ExtResource("7_13yca")]
+position = Vector2(216, 216)
+Destination = NodePath("../Rose10")
+
+[node name="Rose9" parent="Roses" node_paths=PackedStringArray("Destination") instance=ExtResource("7_13yca")]
+position = Vector2(328, 152)
+Destination = NodePath("../Rose3")
+
+[node name="Rose10" parent="Roses" node_paths=PackedStringArray("Destination") instance=ExtResource("7_13yca")]
+position = Vector2(328, 104)
+Destination = NodePath("../Rose8")
+
+[node name="Statues" type="Node2D" parent="."]
+
+[node name="Statue" parent="Statues" instance=ExtResource("8_8dmpc")]
+position = Vector2(152, 104)
+
+[node name="Statue2" parent="Statues" instance=ExtResource("8_8dmpc")]
+position = Vector2(168, 88)
+
+[node name="Statue3" parent="Statues" instance=ExtResource("8_8dmpc")]
+position = Vector2(168, 168)
+
+[node name="Statue4" parent="Statues" instance=ExtResource("8_8dmpc")]
+position = Vector2(168, 184)
+
+[node name="Statue5" parent="Statues" instance=ExtResource("8_8dmpc")]
+position = Vector2(168, 200)
+
+[node name="Statue7" parent="Statues" instance=ExtResource("8_8dmpc")]
+position = Vector2(296, 200)
+
+[node name="Statue8" parent="Statues" instance=ExtResource("8_8dmpc")]
+position = Vector2(296, 216)
+
+[node name="Thorns" type="Node2D" parent="."]
+
+[node name="Thorns" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(248, 168)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns2" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(264, 152)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns3" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(248, 136)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns4" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(232, 120)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns5" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(264, 120)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns6" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(280, 104)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns7" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(248, 104)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns8" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(232, 216)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns9" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(248, 200)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns10" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(264, 216)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns11" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(328, 216)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns12" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(312, 200)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns13" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(184, 152)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns14" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(200, 168)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns15" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(216, 184)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns16" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(280, 168)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns17" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(312, 168)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns18" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(296, 152)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns19" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(264, 184)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns21" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(312, 136)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns22" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(328, 120)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns23" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(200, 200)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns24" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(184, 216)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns25" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(200, 136)
+GameManager = NodePath("../../GameManager")
+
+[node name="Thorns26" parent="Thorns" node_paths=PackedStringArray("GameManager") instance=ExtResource("9_anjjd")]
+position = Vector2(216, 136)
+GameManager = NodePath("../../GameManager")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(252, 150)
