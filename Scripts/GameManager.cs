@@ -8,6 +8,7 @@ public partial class GameManager : Node
 	[Export] private Toy Toy;
 	private int LvlId;
 	private int NumOfActions;
+	public bool HasToy = false;
 	public override void _Ready()
 	{
 		if (Player != null)

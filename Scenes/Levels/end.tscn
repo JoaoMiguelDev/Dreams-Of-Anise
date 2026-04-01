@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=4 uid="uid://cy3ul7he3y2ww"]
+
+[ext_resource type="Script" uid="uid://bxgsp3x2i51k5" path="res://Scripts/Levels/End.cs" id="1_hk1n8"]
+[ext_resource type="Texture2D" uid="uid://d1mw3n24oxs5n" path="res://Assets/Sprites/Tiles/TemplateTile.png" id="1_mf4g0"]
+[ext_resource type="Texture2D" uid="uid://ftxi4ekxxc0d" path="res://Assets/Sprites/Tiles/TemplateCollisionTile.png" id="2_8hjso"]
+[ext_resource type="PackedScene" uid="uid://u3oqj4ehea0a" path="res://Scenes/Interactables/portal.tscn" id="3_hk1n8"]
+[ext_resource type="PackedScene" uid="uid://4sys6wjl2opi" path="res://Scenes/Character/anise.tscn" id="4_03q5g"]
+[ext_resource type="FontFile" uid="uid://d34o3ag5v6w4t" path="res://Assets/Fonts/PixelOperator8.ttf" id="5_8hjso"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t814l"]
+texture = ExtResource("1_mf4g0")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wixbg"]
+sources/0 = SubResource("TileSetAtlasSource_t814l")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7nrtr"]
+texture = ExtResource("2_8hjso")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_kqinv"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_7nrtr")
+
+[sub_resource type="Animation" id="Animation_hk1n8"]
+resource_name = "Disappear"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_03q5g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t814l"]
+_data = {
+&"Disappear": SubResource("Animation_hk1n8"),
+&"RESET": SubResource("Animation_03q5g")
+}
+
+[node name="End" type="Node2D" node_paths=PackedStringArray("FinalMessage")]
+script = ExtResource("1_hk1n8")
+FinalMessage = NodePath("Label")
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Tiles"]
+tile_map_data = PackedByteArray("AAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAWAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAASAAkAAAAAAAAAAAATAAkAAAAAAAAAAAAUAAkAAAAAAAAAAAAVAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAATAAoAAAAAAAAAAAASAAoAAAAAAAAAAAARAAoAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAgAAAAAAAAAAAASAAgAAAAAAAAAAAATAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAAVAAgAAAAAAAAAAAAWAAgAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_wixbg")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="Tiles"]
+tile_map_data = PackedByteArray("AAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAATAA0AAAAAAAAAAAAUAA0AAAAAAAAAAAAVAA0AAAAAAAAAAAAWAA0AAAAAAAAAAAAXAA0AAAAAAAAAAAAXAAwAAAAAAAAAAAAXAAsAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAkAAAAAAAAAAAAXAAgAAAAAAAAAAAAXAAcAAAAAAAAAAAAWAAcAAAAAAAAAAAAVAAcAAAAAAAAAAAAUAAcAAAAAAAAAAAATAAcAAAAAAAAAAAASAAcAAAAAAAAAAAARAAcAAAAAAAAAAAAQAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_kqinv")
+
+[node name="Portal" parent="." instance=ExtResource("3_hk1n8")]
+position = Vector2(264, 200)
+
+[node name="Anise" parent="." instance=ExtResource("4_03q5g")]
+position = Vector2(360, 136)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(313, 167)
+zoom = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 166.0
+offset_top = 158.0
+offset_right = 394.0
+offset_bottom = 181.0
+theme_override_fonts/font = ExtResource("5_8hjso")
+text = "Anise came back..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_t814l")
+}
+autoplay = "Disappear"
+speed_scale = 0.25

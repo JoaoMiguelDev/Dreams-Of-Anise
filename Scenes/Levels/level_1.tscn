@@ -36,7 +36,7 @@ Player = NodePath("../Anise")
 Toy = NodePath("../Toy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(52, -27)
+position = Vector2(52, -35)
 position_smoothing_enabled = true
 
 [node name="Tiles" type="Node2D" parent="."]
@@ -49,15 +49,17 @@ tile_set = SubResource("TileSet_cyadu")
 tile_map_data = PackedByteArray("AAAHAPz/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPr/AAAAAAAAAAAIAPn/AAAAAAAAAAAHAPn/AAAAAAAAAAAGAPn/AAAAAAAAAAAFAPn/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAAAAAAAAAADAPv/AAAAAAAAAAACAPv/AAAAAAAAAAAEAPn/AAAAAAAAAAABAPv/AAAAAAAAAAAAAPv/AAAAAAAAAAD///v/AAAAAAAAAAD+//v/AAAAAAAAAAD9//v/AAAAAAAAAAD8//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAP//AAAAAAAAAAAHAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAADAP7/AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAAHAP3/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_xgxfi")
 
-[node name="Toy" parent="." instance=ExtResource("9_u5ghp")]
+[node name="Toy" parent="." node_paths=PackedStringArray("GameManager") instance=ExtResource("9_u5ghp")]
 position = Vector2(56, 8)
+GameManager = NodePath("../GameManager")
 
 [node name="Anise" parent="." instance=ExtResource("2_3mqfk")]
 z_index = 10
 position = Vector2(120, -88)
 
-[node name="Portal" parent="." instance=ExtResource("8_jv26f")]
+[node name="Portal" parent="." node_paths=PackedStringArray("GameManager") instance=ExtResource("8_jv26f")]
 position = Vector2(104, 8)
+GameManager = NodePath("../GameManager")
 
 [node name="Statues" type="Node2D" parent="."]
 
