@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://6illp1uqybju"]
+
+[ext_resource type="Script" uid="uid://che74isyum6nm" path="res://Scripts/Interactables/Toy.cs" id="1_oevwj"]
+[ext_resource type="Texture2D" uid="uid://b0lucmcpp4vwb" path="res://Assets/Sprites/Interactables/TemplateToys.png" id="2_sthd2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66qwb"]
+size = Vector2(10, 10)
+
+[node name="Toy" type="Area2D" node_paths=PackedStringArray("Sprite")]
+script = ExtResource("1_oevwj")
+Sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sthd2")
+hframes = 6
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_66qwb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

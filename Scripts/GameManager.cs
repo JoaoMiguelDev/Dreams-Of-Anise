@@ -5,6 +5,7 @@ public partial class GameManager : Node
 {
 	[Export] private Level Lvl;
 	[Export] private Anise Player;
+	[Export] private Toy Toy;
 	private int LvlId;
 	private int NumOfActions;
 	public override void _Ready()
@@ -14,6 +15,9 @@ public partial class GameManager : Node
 
 		LvlId = Lvl.GetLevelId();
 		NumOfActions = Lvl.GetNumOfActions();
+
+		if(Toy != null)
+			Toy.SetSprite(LvlId);
 	}
 
     public override void _UnhandledInput(InputEvent @event)

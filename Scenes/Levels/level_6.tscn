@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dr7mvf5ou7qid"]
+[gd_scene load_steps=16 format=4 uid="uid://dr7mvf5ou7qid"]
 
 [ext_resource type="Script" uid="uid://b2m3giwvwb7iy" path="res://Scripts/Levels/Level6.cs" id="1_vrotf"]
 [ext_resource type="Script" uid="uid://bxpv0l8828d0e" path="res://Scripts/GameManager.cs" id="2_ik81l"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c0qj2vx06m0j5" path="res://Scenes/Interactables/thorns.tscn" id="7_cjb10"]
 [ext_resource type="PackedScene" uid="uid://d3ohtxs3cya84" path="res://Scenes/Interactables/cannon.tscn" id="8_5l77v"]
 [ext_resource type="PackedScene" uid="uid://psmdhubjpoye" path="res://Scenes/Interactables/statue.tscn" id="9_6y1v7"]
+[ext_resource type="PackedScene" uid="uid://6illp1uqybju" path="res://Scenes/Interactables/toy.tscn" id="11_bt86y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5l77v"]
 texture = ExtResource("3_h7uay")
@@ -30,10 +31,11 @@ sources/0 = SubResource("TileSetAtlasSource_cjb10")
 [node name="Level6" type="Node2D"]
 script = ExtResource("1_vrotf")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("Lvl", "Player")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("Lvl", "Player", "Toy")]
 script = ExtResource("2_ik81l")
 Lvl = NodePath("..")
 Player = NodePath("../Anise")
+Toy = NodePath("../Toy")
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -44,6 +46,9 @@ tile_set = SubResource("TileSet_6y1v7")
 [node name="TileMapLayer2" type="TileMapLayer" parent="Tiles"]
 tile_map_data = PackedByteArray("AAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAAOAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAAQAAwAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAALAAYAAAAAAAAAAAALAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAVAAYAAAAAAAAAAAAVAAUAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAUAAAAAAAAAAAAYAAQAAAAAAAAAAAAYAAYAAAAAAAAAAAAYAAcAAAAAAAAAAAAYAAgAAAAAAAAAAAAYAAkAAAAAAAAAAAAYAAwAAAAAAAAAAAAYAA0AAAAAAAAAAAAZAA0AAAAAAAAAAAAaAA0AAAAAAAAAAAAaAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAfAAsAAAAAAAAAAAAfAAoAAAAAAAAAAAAfAAkAAAAAAAAAAAAfAAgAAAAAAAAAAAAfAAcAAAAAAAAAAAAfAAYAAAAAAAAAAAAeAAUAAAAAAAAAAAAfAAUAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAcAAYAAAAAAAAAAAAbAAYAAAAAAAAAAAAaAAYAAAAAAAAAAAAZAAYAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAATAAUAAAAAAAAAAAAXAA0AAAAAAAAAAAAWAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAATAAwAAAAAAAAAAAASAAwAAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAAWAA0AAAAAAAAAAAAYAAsAAAAAAAAAAAANAAkAAAAAAAAAAAANAA0AAAAAAAAAAAAIAAkAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAA0AAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAgAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_bt86y")
+
+[node name="Toy" parent="." instance=ExtResource("11_bt86y")]
+position = Vector2(168, 104)
 
 [node name="Portal" parent="." instance=ExtResource("5_eygg8")]
 position = Vector2(488, 104)
