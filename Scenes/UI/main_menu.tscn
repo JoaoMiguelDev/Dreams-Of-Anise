@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmvpdr8pjom4d"]
+
+[ext_resource type="FontFile" uid="uid://d34o3ag5v6w4t" path="res://Assets/Fonts/PixelOperator8.ttf" id="1_5wsvm"]
+[ext_resource type="Script" uid="uid://c3pdf3q8daesf" path="res://Scripts/UI/MainMenu.cs" id="1_i2xx2"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i2xx2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5408662, 0.30746716, 0.5727106, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+
+[node name="MainTitle" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_5wsvm")
+theme_override_font_sizes/font_size = 32
+text = "Dreams Of
+Anise"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PlayButton" type="Button" parent="MarginContainer2/ButtonContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_5wsvm")
+theme_override_font_sizes/font_size = 24
+text = "Play"
+
+[node name="CreditsButton" type="Button" parent="MarginContainer2/ButtonContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_5wsvm")
+theme_override_font_sizes/font_size = 24
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="MarginContainer2/ButtonContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_5wsvm")
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer2/ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/ButtonContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]

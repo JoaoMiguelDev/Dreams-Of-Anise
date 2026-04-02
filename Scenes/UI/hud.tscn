@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://pp35s7g2oh5t"]
+
+[ext_resource type="Script" uid="uid://dch4my1ibbca" path="res://Scripts/UI/Hud.cs" id="1_fdl0h"]
+[ext_resource type="Texture2D" uid="uid://bkra80egr2l2q" path="res://Assets/Sprites/UI/TemplateCircle.png" id="2_8glcj"]
+[ext_resource type="FontFile" uid="uid://d34o3ag5v6w4t" path="res://Assets/Fonts/PixelOperator8.ttf" id="3_vsu76"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("LevelInfo", "ActionInfo")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fdl0h")
+LevelInfo = NodePath("HBoxContainer/ActionMargin/Level")
+ActionInfo = NodePath("HBoxContainer/LevelMargin/Actions")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.0
+offset_right = 91.0
+offset_bottom = 93.0
+grow_horizontal = 2
+theme_override_constants/separation = 425
+
+[node name="LevelMargin" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 36
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/LevelMargin"]
+layout_mode = 2
+texture = ExtResource("2_8glcj")
+stretch_mode = 4
+
+[node name="Actions" type="Label" parent="HBoxContainer/LevelMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vsu76")
+theme_override_font_sizes/font_size = 24
+text = "20"
+horizontal_alignment = 1
+
+[node name="ActionMargin" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 25
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ActionMargin"]
+layout_mode = 2
+texture = ExtResource("2_8glcj")
+stretch_mode = 4
+
+[node name="Level" type="Label" parent="HBoxContainer/ActionMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vsu76")
+theme_override_font_sizes/font_size = 24
+text = "50"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 18
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_vsu76")
+theme_override_font_sizes/font_size = 8
+text = "- R to restart -"
+horizontal_alignment = 1
+vertical_alignment = 2

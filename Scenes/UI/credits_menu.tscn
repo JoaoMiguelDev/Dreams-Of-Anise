@@ -1,0 +1,139 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv2fbv4g0t4hp"]
+
+[ext_resource type="FontFile" uid="uid://d34o3ag5v6w4t" path="res://Assets/Fonts/PixelOperator8.ttf" id="1_kd2x0"]
+[ext_resource type="Script" uid="uid://dlkm5xp3k3ta0" path="res://Scripts/UI/CreditsMenu.cs" id="1_mgje6"]
+[ext_resource type="FontFile" uid="uid://cphamq0lhkiq0" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="2_mgje6"]
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mgje6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5411765, 0.30588236, 0.57254905, 1)
+
+[node name="CreditsMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RolesContainer" type="VBoxContainer" parent="CreditsMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="JoaoContainer" type="VBoxContainer" parent="CreditsMarginContainer/RolesContainer"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsMarginContainer/RolesContainer/JoaoContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kd2x0")
+theme_override_font_sizes/font_size = 8
+text = "Direction & Scripting"
+
+[node name="Name" type="Label" parent="CreditsMarginContainer/RolesContainer/JoaoContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mgje6")
+text = "João Miguel"
+
+[node name="ErikContainer" type="VBoxContainer" parent="CreditsMarginContainer/RolesContainer"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsMarginContainer/RolesContainer/ErikContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kd2x0")
+theme_override_font_sizes/font_size = 8
+text = "Art"
+
+[node name="Name" type="Label" parent="CreditsMarginContainer/RolesContainer/ErikContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mgje6")
+text = "Erik"
+
+[node name="GabrielContainer" type="VBoxContainer" parent="CreditsMarginContainer/RolesContainer"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsMarginContainer/RolesContainer/GabrielContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kd2x0")
+theme_override_font_sizes/font_size = 8
+text = "Sound Design"
+
+[node name="Name" type="Label" parent="CreditsMarginContainer/RolesContainer/GabrielContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mgje6")
+text = "Gabriel"
+
+[node name="Ian" type="VBoxContainer" parent="CreditsMarginContainer/RolesContainer"]
+layout_mode = 2
+
+[node name="Role" type="Label" parent="CreditsMarginContainer/RolesContainer/Ian"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kd2x0")
+theme_override_font_sizes/font_size = 8
+text = "Soudntrack Composer"
+
+[node name="Name" type="Label" parent="CreditsMarginContainer/RolesContainer/Ian"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mgje6")
+text = "Ian"
+
+[node name="ReturnButtonContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ReturnButton" type="Button" parent="ReturnButtonContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kd2x0")
+text = "Return"
+
+[node name="CntrlrMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -353.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CntrlrMarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kd2x0")
+theme_override_font_sizes/font_size = 8
+text = "*A special thanks to Team 
+Cntrl´r for letting this happen and 
+Matheus for orienting the project"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="ReturnButtonContainer/ReturnButton" to="." method="_on_return_button_pressed"]

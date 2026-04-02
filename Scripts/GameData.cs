@@ -16,5 +16,10 @@ public partial class GameData : Node
 		ToyAmount ++;
 		GD.Print("Toy amount: "+ ToyAmount);
 	}
+
+	public void ResetToyAmount()
+	{
+		ToyAmount = 0;
+	}
 	
 }

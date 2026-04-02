@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dw4bs8u5h47r6"]
+[gd_scene load_steps=15 format=4 uid="uid://dw4bs8u5h47r6"]
 
 [ext_resource type="Script" uid="uid://bqotu61auceeo" path="res://Scripts/Levels/Level4.cs" id="1_xq0e5"]
 [ext_resource type="Script" uid="uid://bxpv0l8828d0e" path="res://Scripts/GameManager.cs" id="2_6grq2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://u3oqj4ehea0a" path="res://Scenes/Interactables/portal.tscn" id="7_slbhm"]
 [ext_resource type="PackedScene" uid="uid://psmdhubjpoye" path="res://Scenes/Interactables/statue.tscn" id="8_i5g5g"]
 [ext_resource type="PackedScene" uid="uid://6illp1uqybju" path="res://Scenes/Interactables/toy.tscn" id="9_keyqw"]
+[ext_resource type="PackedScene" uid="uid://pp35s7g2oh5t" path="res://Scenes/UI/hud.tscn" id="10_gsxik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3osng"]
 texture = ExtResource("3_h0uxt")
@@ -29,11 +30,12 @@ sources/0 = SubResource("TileSetAtlasSource_ecora")
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_xq0e5")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("Lvl", "Player", "Toy")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("Lvl", "Player", "Toy", "HUD")]
 script = ExtResource("2_6grq2")
 Lvl = NodePath("..")
 Player = NodePath("../Anise")
 Toy = NodePath("../Toy")
+HUD = NodePath("../CanvasLayer/HUD")
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -94,3 +96,7 @@ position = Vector2(168, 168)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(223, 155)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("10_gsxik")]

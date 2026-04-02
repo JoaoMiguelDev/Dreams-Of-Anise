@@ -6,6 +6,7 @@ public partial class GameManager : Node
 	[Export] private Level Lvl;
 	[Export] private Anise Player;
 	[Export] private Toy Toy;
+	[Export] private Hud HUD;
 	private int LvlId;
 	private int NumOfActions;
 	public bool HasToy = false;
@@ -16,6 +17,9 @@ public partial class GameManager : Node
 
 		LvlId = Lvl.GetLevelId();
 		NumOfActions = Lvl.GetNumOfActions();
+
+		HUD.SetLevelInfo(LvlId.ToString());
+		HUD.SetActionInfo(NumOfActions.ToString());
 
 		if(Toy != null)
 			Toy.SetSprite(LvlId);
@@ -47,7 +51,7 @@ public partial class GameManager : Node
 
 	private void CheckCurrentState()
 	{
-		GD.Print(NumOfActions);
+		HUD.SetActionInfo(NumOfActions.ToString());
 		if(NumOfActions < 0)
 		{
 			RestartGame();
