@@ -25,8 +25,9 @@ public partial class LevelManager : Node
 		GetTree().CallDeferred("change_scene_to_file", Levels[CurrentLevel]);
 	}
 
-	private void ResetLevelIndex()
+	public void ResetLevelIndex()
 	{
 		CurrentLevel = 0;
 	}
+
 }

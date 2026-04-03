@@ -11,6 +11,7 @@ public partial class MainMenu : Control
 
 		ButtonPressed = true;
 		GameData.Instance.ResetToyAmount();
+		LevelManager.Instance.ResetLevelIndex();
 		LevelManager.Instance.ChangeLevel();
 	}
 
