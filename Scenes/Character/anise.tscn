@@ -1,22 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://4sys6wjl2opi"]
+[gd_scene load_steps=14 format=3 uid="uid://4sys6wjl2opi"]
 
-[ext_resource type="Texture2D" uid="uid://djcsj2dsxleg0" path="res://Assets/Sprites/Character/TemplateCharacter.png" id="1_h47cl"]
 [ext_resource type="Script" uid="uid://bmk2ym51ov84b" path="res://Scripts/Character/Anise.cs" id="1_ub3si"]
+[ext_resource type="Texture2D" uid="uid://c7uk6bxm62ibj" path="res://Assets/Sprites/Character/AniseDeathTemplate.png" id="2_msbye"]
 [ext_resource type="AudioStream" uid="uid://bfaafqgyi67b6" path="res://Assets/Audio/SFX/Anise/passo.wav" id="3_5u1y0"]
+[ext_resource type="Texture2D" uid="uid://dnf27vtuqpo44" path="res://Assets/Sprites/Character/AniseIdleTemplate.png" id="3_yose1"]
+[ext_resource type="Texture2D" uid="uid://dwfp4q1iycuvr" path="res://Assets/Sprites/Character/AniseWalkTemplate.png" id="4_3wlsy"]
+[ext_resource type="AudioStream" uid="uid://dn248hiw0t11" path="res://Assets/Audio/SFX/Anise/morte.wav" id="6_yose1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8sf6"]
+atlas = ExtResource("2_msbye")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1alc"]
+atlas = ExtResource("2_msbye")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crh67"]
+atlas = ExtResource("3_yose1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eparq"]
+atlas = ExtResource("3_yose1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwhmh"]
+atlas = ExtResource("4_3wlsy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_50q8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8sf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1alc")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crh67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eparq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwhmh")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isa4f"]
 size = Vector2(8, 8)
 
-[node name="Anise" type="CharacterBody2D" node_paths=PackedStringArray("Up", "Down", "Left", "Right", "WalkSFX")]
+[node name="Anise" type="CharacterBody2D" node_paths=PackedStringArray("Up", "Down", "Left", "Right", "Sprite", "WalkSFX", "DeathSFX")]
 script = ExtResource("1_ub3si")
 Up = NodePath("Up")
 Down = NodePath("Down")
 Left = NodePath("Left")
 Right = NodePath("Right")
+Sprite = NodePath("AnimatedSprite2D")
 WalkSFX = NodePath("WalkSFX")
+DeathSFX = NodePath("DeathSFX")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_h47cl")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_50q8y")
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_isa4f")
@@ -43,3 +103,6 @@ hit_from_inside = true
 
 [node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_5u1y0")
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_yose1")

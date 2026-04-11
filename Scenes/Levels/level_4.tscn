@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://dw4bs8u5h47r6"]
+[gd_scene load_steps=17 format=4 uid="uid://dw4bs8u5h47r6"]
 
 [ext_resource type="Script" uid="uid://bqotu61auceeo" path="res://Scripts/Levels/Level4.cs" id="1_xq0e5"]
 [ext_resource type="Script" uid="uid://bxpv0l8828d0e" path="res://Scripts/GameManager.cs" id="2_6grq2"]
 [ext_resource type="Texture2D" uid="uid://d1mw3n24oxs5n" path="res://Assets/Sprites/Tiles/TemplateTile.png" id="3_h0uxt"]
+[ext_resource type="PackedScene" uid="uid://dshvdio626y3y" path="res://Scenes/shaky_camera.tscn" id="3_slbhm"]
 [ext_resource type="Texture2D" uid="uid://ftxi4ekxxc0d" path="res://Assets/Sprites/Tiles/TemplateCollisionTile.png" id="4_keyqw"]
 [ext_resource type="PackedScene" uid="uid://4sys6wjl2opi" path="res://Scenes/Character/anise.tscn" id="5_gsxik"]
 [ext_resource type="PackedScene" uid="uid://d3ohtxs3cya84" path="res://Scenes/Interactables/cannon.tscn" id="6_3asqb"]
@@ -31,12 +32,16 @@ sources/0 = SubResource("TileSetAtlasSource_ecora")
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_xq0e5")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("Lvl", "Player", "Toy", "HUD")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("Lvl", "Player", "Toy", "HUD", "Camera")]
 script = ExtResource("2_6grq2")
 Lvl = NodePath("..")
 Player = NodePath("../Anise")
 Toy = NodePath("../Toy")
 HUD = NodePath("../HUDLayer/HUD")
+Camera = NodePath("../ShakyCamera")
+
+[node name="ShakyCamera" parent="." instance=ExtResource("3_slbhm")]
+position = Vector2(223, 155)
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -94,9 +99,6 @@ position = Vector2(168, 184)
 
 [node name="Statue4" parent="Statues" instance=ExtResource("8_i5g5g")]
 position = Vector2(168, 168)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(223, 155)
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 

@@ -7,11 +7,15 @@ public partial class Anise : CharacterBody2D
 	[Export] private RayCast2D Down;
 	[Export] private RayCast2D Left;
 	[Export] private RayCast2D Right;
+	[Export] private AnimatedSprite2D Sprite;
 	[Export] private AudioStreamPlayer2D WalkSFX;
+	[Export] private AudioStreamPlayer2D DeathSFX;
 	[Signal] public delegate void ActionTakenEventHandler();
 	private float MoveSpeed = 12f;
+	private Vector2 LastDirection = Vector2.Down;
 	private Vector2 TileSize = new Vector2(16,16);
 	private bool IsMoving = false;
+	private bool IsDead = false;
 	private Vector2 TargetPosition;
 
     public override void _Ready()
@@ -28,6 +32,7 @@ public partial class Anise : CharacterBody2D
             {
                 GlobalPosition = TargetPosition;
                 IsMoving = false;
+				Sprite.Play("Idle");
             }
 		}
 		else
@@ -52,6 +57,9 @@ public partial class Anise : CharacterBody2D
         //     TargetPosition = GlobalPosition + direction * TileSize;
         // }
 
+		if (direction != Vector2.Zero)
+        	UpdateSprite(direction);
+
 		if (direction == Vector2.Zero || ray == null) return;
 
 		if (ray.IsColliding())
@@ -60,7 +68,7 @@ public partial class Anise : CharacterBody2D
         	{
             	statue.TryPush(direction);
             }
-        	
+        	Sprite.Play("Idle");
         	return; 
         }
 
@@ -70,9 +78,21 @@ public partial class Anise : CharacterBody2D
     	TargetPosition = GlobalPosition + direction * TileSize;
     }
 
+	private void UpdateSprite(Vector2 direction)
+	{
+    	LastDirection = direction;
+
+		if (direction == Vector2.Right)
+        	Sprite.FlipH = false;
+    	else if (direction == Vector2.Left)
+        	Sprite.FlipH = true;
+
+    	Sprite.Play("Walk");
+	}
+
 	public void TeleportTo(Vector2 worldPosition)
 	{
-	    GlobalPosition = worldPosition;
+		GlobalPosition = worldPosition;
 	    TargetPosition = worldPosition;
 	    IsMoving = false;
 	}	
@@ -80,6 +100,22 @@ public partial class Anise : CharacterBody2D
 	public void ActionTakenEmitSignal()
 	{
 		EmitSignal(SignalName.ActionTaken);
+	}
+
+	public async void Die()
+	{
+		if(IsDead)
+			return;
+
+		IsMoving = false;
+		SetPhysicsProcess(false);
+		
+		DeathSFX.Play();
+		Sprite.Play("Death");
+
+		await ToSignal(GetTree().CreateTimer(2f), "timeout");
+
+		LevelManager.Instance.ReloadCurrent();
 	}
 
 }

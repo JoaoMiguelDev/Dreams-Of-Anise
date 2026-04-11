@@ -7,6 +7,7 @@ public partial class GameManager : Node
 	[Export] private Anise Player;
 	[Export] private Toy Toy;
 	[Export] private Hud HUD;
+	[Export] private ShakyCamera Camera;
 	private int LvlId;
 	private int NumOfActions;
 	public bool HasToy = false;
@@ -35,7 +36,8 @@ public partial class GameManager : Node
 	public void RestartGame()
 	{
 		// GetTree().ReloadCurrentScene();
-		GetTree().CallDeferred("reload_current_scene"); //Better for avoiding collision and physics problems
+		// GetTree().CallDeferred("reload_current_scene"); //Better for avoiding collision and physics problems
+		LevelManager.Instance.ReloadCurrent();
 	}
 
 	public void ConsumeAction()
@@ -45,6 +47,8 @@ public partial class GameManager : Node
 
 	public void TakeDamage()
 	{
+		if(Camera != null)
+			Camera.Shake(8);
 		ConsumeAction(); //It will do the same thing as Consume action for now, but will be updated to shake screen and do more stuff
 		CheckCurrentState();
 	}
@@ -54,7 +58,7 @@ public partial class GameManager : Node
 		HUD.SetActionInfo(NumOfActions.ToString());
 		if(NumOfActions < 0)
 		{
-			RestartGame();
+			Player.Die();
 		}
 	}
 
@@ -62,6 +66,12 @@ public partial class GameManager : Node
 	{
 		ConsumeAction();
 		CheckCurrentState();
+	}
+
+	public void KillPlayer()
+	{
+		Camera.Shake(8);
+		Player.Die();
 	}
 
 }

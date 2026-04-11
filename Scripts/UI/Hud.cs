@@ -13,6 +13,9 @@ public partial class Hud : Control
 
 	public void SetActionInfo(string info)
 	{
-		ActionInfo.Text = info;
+		if(info.ToInt() < 0)
+			ActionInfo.Text = "X";
+		else
+			ActionInfo.Text = info;
 	}
 }

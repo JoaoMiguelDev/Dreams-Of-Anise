@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dshvdio626y3y"]
+
+[ext_resource type="Script" uid="uid://cp67emd26md5t" path="res://Scripts/ShakyCamera.cs" id="1_hty6w"]
+
+[node name="ShakyCamera" type="Camera2D"]
+script = ExtResource("1_hty6w")

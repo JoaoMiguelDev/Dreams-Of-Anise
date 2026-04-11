@@ -5,6 +5,7 @@ public partial class Cannon : StaticBody2D
 {
 	[Export] private LaserBeam Laser;
 	[Export] public GameManager GameManager;
+	[Export] private AudioStreamPlayer2D LaserSFX;
 	private bool Hit = false;
 	public override void _Ready()
 	{
@@ -17,7 +18,9 @@ public partial class Cannon : StaticBody2D
 		if (!Hit)
 		{
 			Hit = true;
-			GameManager.RestartGame();
+			LaserSFX.Play();
+			// GameManager.RestartGame();
+			GameManager.KillPlayer();
 		}
 	}
 }

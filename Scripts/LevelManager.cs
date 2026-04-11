@@ -26,6 +26,11 @@ public partial class LevelManager : Node
 		PlayMusicForCurrentLevel();
 	}
 
+	public void ReloadCurrent()
+	{
+		GetTree().CallDeferred("reload_current_scene");
+	}
+
 	public void ResetLevelIndex()
 	{
 		CurrentLevel = 0;
