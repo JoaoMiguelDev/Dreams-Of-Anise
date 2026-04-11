@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://cphamq0lhkiq0" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="2_oykix"]
 [ext_resource type="FontFile" uid="uid://d34o3ag5v6w4t" path="res://Assets/Fonts/PixelOperator8.ttf" id="3_kdnb7"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("OpenPauseMenu")]
 process_mode = 3
 z_index = 999
 layout_mode = 3
@@ -14,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r2i2h")
+OpenPauseMenu = NodePath("")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -75,6 +76,9 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("3_kdnb7")
 text = "  Quit  "
 
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

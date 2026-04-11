@@ -136,4 +136,5 @@ Cntrl´r for letting this happen and
 Matheus for orienting the project"
 horizontal_alignment = 2
 
+[connection signal="mouse_entered" from="ReturnButtonContainer/ReturnButton" to="." method="_on_return_button_mouse_entered"]
 [connection signal="pressed" from="ReturnButtonContainer/ReturnButton" to="." method="_on_return_button_pressed"]

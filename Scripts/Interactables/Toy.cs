@@ -10,6 +10,7 @@ public partial class Toy : Area2D
         if(body is Anise)
         {
             // GameData.Instance.AddToy();
+            AudioManager.Instance.PlayCollectToy();
             GameManager.HasToy = true;
             QueueFree();
         }

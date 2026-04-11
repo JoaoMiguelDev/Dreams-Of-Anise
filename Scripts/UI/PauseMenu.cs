@@ -30,7 +30,7 @@ public partial class PauseMenu : Control
 	private void Unpause()
 	{
 		Visible = false;
-		GetTree().Paused = false;		
+		GetTree().Paused = false;	
 	}
 
 	private bool IsPaused()
@@ -40,16 +40,35 @@ public partial class PauseMenu : Control
 
 	public void _on_resume_pressed()
 	{
+		AudioManager.Instance.PlayUIClick();
 		Unpause();
 	}
 	public void _on_retry_pressed()
 	{
+		AudioManager.Instance.PlayUIClick();
 		GameManager.RestartGame();
 		Unpause();
 	}
 	public void _on_quit_pressed()
 	{
+		AudioManager.Instance.StopAll();
+		AudioManager.Instance.PlayUIReturn();
 		GetTree().CallDeferred("change_scene_to_file", "res://Scenes/UI/main_menu.tscn");
 		Unpause();
+	}
+
+	public void _on_resume_mouse_entered()
+	{
+		AudioManager.Instance.PlayUIHover();
+	}
+
+	public void _on_retry_mouse_entered()
+	{
+		AudioManager.Instance.PlayUIHover();		
+	}
+
+	public void _on_quit_mouse_entered()
+	{
+		AudioManager.Instance.PlayUIHover();		
 	}
 }

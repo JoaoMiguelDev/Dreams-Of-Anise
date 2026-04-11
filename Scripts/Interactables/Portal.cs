@@ -12,6 +12,7 @@ public partial class Portal : Area2D
                 GameData.Instance.AddToy();
 
             
+            AudioManager.Instance.PlayPortalSFX();
             LevelManager.Instance.ChangeLevel();
         }
     }

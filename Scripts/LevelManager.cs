@@ -23,6 +23,7 @@ public partial class LevelManager : Node
 
 		// GetTree().ChangeSceneToFile(Levels[CurrentLevel]);
 		GetTree().CallDeferred("change_scene_to_file", Levels[CurrentLevel]);
+		PlayMusicForCurrentLevel();
 	}
 
 	public void ResetLevelIndex()
@@ -30,4 +31,19 @@ public partial class LevelManager : Node
 		CurrentLevel = 0;
 	}
 
+	private void PlayMusicForCurrentLevel()
+    {
+        if (CurrentLevel == 1)
+		{
+			AudioManager.Instance.StopAll();                         
+            AudioManager.Instance.PlayEarlyLevelSong();			
+		} 
+
+        else if (CurrentLevel == 4)
+		{
+			AudioManager.Instance.StopAll();
+            AudioManager.Instance.PlayLateLevelSong();			
+		} 
+
+    }
 }

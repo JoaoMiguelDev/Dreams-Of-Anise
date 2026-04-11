@@ -9,8 +9,14 @@ public partial class CreditsMenu : Control
 		if(ButtonPressed)
 			return;
 
+		AudioManager.Instance.PlayUIReturn();
 		ButtonPressed = true;
 		
 		GetTree().ChangeSceneToFile("res://Scenes/UI/main_menu.tscn");
+	}
+
+	public void _on_return_button_mouse_entered()
+	{
+		AudioManager.Instance.PlayUIHover();
 	}
 }

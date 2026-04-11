@@ -4,6 +4,7 @@ using System;
 public partial class Rose : Area2D
 {
     [Export] private Rose Destination;
+    [Export] private AudioStreamPlayer2D RoseSFX;
     private bool IsEnabled = true;
 
     private void _on_body_entered(Node2D body)
@@ -16,6 +17,7 @@ public partial class Rose : Area2D
             IsEnabled = false;
             Destination.IsEnabled = false;
 
+            RoseSFX.Play();
             anise.TeleportTo(Destination.GlobalPosition);
 
             GetTree().CreateTimer(0.1f).Timeout += () =>

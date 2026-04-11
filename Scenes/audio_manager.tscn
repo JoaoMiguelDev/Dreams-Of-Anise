@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://drnn85htlanf0"]
+
+[ext_resource type="Script" uid="uid://ct0g2eqslk6af" path="res://Scripts/AudioManager.cs" id="1_sm2tf"]
+[ext_resource type="AudioStream" uid="uid://brnfmf2aa4hy4" path="res://Assets/Audio/Music/Menu/menu-anise.ogg" id="2_hhwve"]
+[ext_resource type="AudioStream" uid="uid://ng86sihd4xuq" path="res://Assets/Audio/Music/Menu/menu-anise-loop.ogg" id="3_qixve"]
+[ext_resource type="AudioStream" uid="uid://4sktxits4eh8" path="res://Assets/Audio/Music/Level/anise1.ogg" id="4_0hehx"]
+[ext_resource type="AudioStream" uid="uid://cvyr1d7hxskdg" path="res://Assets/Audio/Music/Level/anise1-loop.ogg" id="5_mjqhu"]
+[ext_resource type="AudioStream" uid="uid://crlicld1wkwx4" path="res://Assets/Audio/Music/Level/anise2.ogg" id="6_5kf6k"]
+[ext_resource type="AudioStream" uid="uid://6dy14ioaina4" path="res://Assets/Audio/Music/Level/anise2-loop.ogg" id="7_tnn7g"]
+[ext_resource type="AudioStream" uid="uid://bw31o27klewem" path="res://Assets/Audio/SFX/UI/menu_clicar.wav" id="8_jmilc"]
+[ext_resource type="AudioStream" uid="uid://cbyuuko6lnqyc" path="res://Assets/Audio/SFX/UI/menu_hover.wav" id="9_5nrbi"]
+[ext_resource type="AudioStream" uid="uid://d04b4fi5tauh2" path="res://Assets/Audio/SFX/UI/menu_sair.wav" id="10_pn88s"]
+[ext_resource type="AudioStream" uid="uid://ckc361t1fubjn" path="res://Assets/Audio/SFX/Interactables/colecionavel_coletar.wav" id="11_5nrbi"]
+[ext_resource type="AudioStream" uid="uid://jgnee3pe8mgj" path="res://Assets/Audio/SFX/Interactables/vitoria.wav" id="12_pn88s"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("MainMenuSong", "MainMenuSongLoop", "EarlyLevelSong", "EarlyLevelSongLoop", "LateLevelSong", "LateLevelSongLoop", "UIClick", "UIHover", "UIReturn", "PortalSFX", "CollectToy")]
+script = ExtResource("1_sm2tf")
+MainMenuSong = NodePath("MainMenuSong")
+MainMenuSongLoop = NodePath("MainMenuSongLoop")
+EarlyLevelSong = NodePath("EarlyLevelSong")
+EarlyLevelSongLoop = NodePath("EarlyLevelSongLoop")
+LateLevelSong = NodePath("LateLevelSong")
+LateLevelSongLoop = NodePath("LateLevelSongLoop")
+UIClick = NodePath("UIClick")
+UIHover = NodePath("UIHover")
+UIReturn = NodePath("UIReturn")
+PortalSFX = NodePath("PortalSFX")
+CollectToy = NodePath("CollectToy")
+
+[node name="MainMenuSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hhwve")
+
+[node name="MainMenuSongLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qixve")
+
+[node name="EarlyLevelSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0hehx")
+
+[node name="EarlyLevelSongLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mjqhu")
+
+[node name="LateLevelSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5kf6k")
+
+[node name="LateLevelSongLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_tnn7g")
+
+[node name="UIClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jmilc")
+
+[node name="UIHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_5nrbi")
+volume_db = 10.0
+
+[node name="UIReturn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_pn88s")
+
+[node name="CollectToy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_5nrbi")
+
+[node name="PortalSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_pn88s")
+pitch_scale = 2.0
+
+[connection signal="finished" from="MainMenuSong" to="." method="_on_main_menu_song_finished"]
+[connection signal="finished" from="MainMenuSongLoop" to="." method="_on_main_menu_song_loop_finished"]
+[connection signal="finished" from="EarlyLevelSong" to="." method="_on_early_level_song_finished"]
+[connection signal="finished" from="EarlyLevelSongLoop" to="." method="_on_early_level_song_loop_finished"]
+[connection signal="finished" from="LateLevelSong" to="." method="_on_late_level_song_finished"]
+[connection signal="finished" from="LateLevelSongLoop" to="." method="_on_late_level_song_loop_finished"]

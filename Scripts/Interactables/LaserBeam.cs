@@ -14,7 +14,7 @@ public partial class LaserBeam : RayCast2D
     {
         // Cria a Line2D dinamicamente — sem precisar configurar nada no editor
         _line = new Line2D();
-        _line.Width = 5f;
+        _line.Width = 4f;
         _line.DefaultColor = Colors.Red;
         AddChild(_line);
 

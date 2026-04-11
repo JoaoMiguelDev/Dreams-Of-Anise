@@ -7,6 +7,7 @@ public partial class Statue : CharacterBody2D
 	[Export] private RayCast2D Down;
 	[Export] private RayCast2D Left;
 	[Export] private RayCast2D Right;
+	[Export] private AudioStreamPlayer2D PushSFX;
 	private float MoveSpeed = 8f;
 	private Vector2 TileSize = new Vector2(16,16);
 	private bool IsMoving = false;
@@ -48,6 +49,7 @@ public partial class Statue : CharacterBody2D
 
     	TargetPosition = GlobalPosition + direction * TileSize;
     	IsMoving = true;
+		PushSFX.Play();
     	return true;
 	}
 
