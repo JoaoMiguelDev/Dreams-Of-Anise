@@ -53,7 +53,8 @@ public partial class PauseMenu : Control
 	{
 		AudioManager.Instance.StopAll();
 		AudioManager.Instance.PlayUIReturn();
-		GetTree().CallDeferred("change_scene_to_file", "res://Scenes/UI/main_menu.tscn");
+		// GetTree().CallDeferred("change_scene_to_file", "res://Scenes/UI/main_menu.tscn");
+		LevelTransition.Instance.Transitioning("res://Scenes/UI/main_menu.tscn");
 		Unpause();
 	}
 

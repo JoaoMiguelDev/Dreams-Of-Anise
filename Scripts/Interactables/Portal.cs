@@ -6,8 +6,10 @@ public partial class Portal : Area2D
     [Export] private GameManager GameManager;
     public void _on_body_entered(Node2D body)
     {
-        if(body is Anise)
+        if(body is Anise anise)
         {
+            anise.PauseAnise();
+            
             if(GameManager != null && GameManager.HasToy)
                 GameData.Instance.AddToy();
 

@@ -35,6 +35,7 @@ public partial class GameManager : Node
 
 	public void RestartGame()
 	{
+		Player.PauseAnise();
 		// GetTree().ReloadCurrentScene();
 		// GetTree().CallDeferred("reload_current_scene"); //Better for avoiding collision and physics problems
 		LevelManager.Instance.ReloadCurrent();

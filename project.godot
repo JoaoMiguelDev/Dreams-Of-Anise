@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 LevelManager="*res://Scripts/LevelManager.cs"
 GameData="*res://Scripts/GameData.cs"
 AudioManager="*res://Scenes/audio_manager.tscn"
+LevelTransition="*res://Scenes/level_transition.tscn"
 
 [display]
 

@@ -14,6 +14,8 @@ public partial class LevelManager : Node
 
 	public void ChangeLevel()
 	{
+		LevelTransition.Instance.Transitioning(Levels[CurrentLevel]);
+
 		CurrentLevel ++;
 
 		if(CurrentLevel >= Levels.Length) //If the number of levels end, goes back to the first item.
@@ -22,13 +24,16 @@ public partial class LevelManager : Node
 		}
 
 		// GetTree().ChangeSceneToFile(Levels[CurrentLevel]);
-		GetTree().CallDeferred("change_scene_to_file", Levels[CurrentLevel]);
+		// GetTree().CallDeferred("change_scene_to_file", Levels[CurrentLevel]);
+		LevelTransition.Instance.Transitioning(Levels[CurrentLevel]);
 		PlayMusicForCurrentLevel();
 	}
 
 	public void ReloadCurrent()
 	{
-		GetTree().CallDeferred("reload_current_scene");
+		LevelTransition.Instance.Transitioning(Levels[CurrentLevel]);
+		// GetTree().CallDeferred("reload_current_scene");
+		// GetTree().CallDeferred("change_scene_to_file", Levels[CurrentLevel]);
 	}
 
 	public void ResetLevelIndex()

@@ -95,6 +95,10 @@ GameManager = NodePath("../../GameManager")
 position = Vector2(440, 200)
 GameManager = NodePath("../../GameManager")
 
+[node name="Portal" parent="." node_paths=PackedStringArray("GameManager") instance=ExtResource("8_doouk")]
+position = Vector2(456, 216)
+GameManager = NodePath("../GameManager")
+
 [node name="Anise" parent="." instance=ExtResource("6_3koi7")]
 position = Vector2(312, 216)
 
@@ -118,10 +122,6 @@ GameManager = NodePath("../../GameManager")
 [node name="Cannon3" parent="Cannons" node_paths=PackedStringArray("GameManager") instance=ExtResource("7_20kd1")]
 position = Vector2(248, 152)
 GameManager = NodePath("../../GameManager")
-
-[node name="Portal" parent="." node_paths=PackedStringArray("GameManager") instance=ExtResource("8_doouk")]
-position = Vector2(456, 216)
-GameManager = NodePath("../GameManager")
 
 [node name="Statue" type="Node2D" parent="."]
 

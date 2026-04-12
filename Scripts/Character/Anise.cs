@@ -113,9 +113,16 @@ public partial class Anise : CharacterBody2D
 		DeathSFX.Play();
 		Sprite.Play("Death");
 
-		await ToSignal(GetTree().CreateTimer(2f), "timeout");
+		await ToSignal(GetTree().CreateTimer(1.0f), "timeout");
 
 		LevelManager.Instance.ReloadCurrent();
+	}
+
+	public void PauseAnise()
+	{
+		IsMoving = false;
+		SetPhysicsProcess(false);
+		Sprite.Animation = "Idle";
 	}
 
 }
