@@ -1,8 +1,72 @@
-[gd_scene load_steps=5 format=3 uid="uid://tl5nwgy41swb"]
+[gd_scene load_steps=14 format=3 uid="uid://tl5nwgy41swb"]
 
 [ext_resource type="Script" uid="uid://d1pudynbqt7l0" path="res://Scripts/Interactables/Rose.cs" id="1_w5866"]
-[ext_resource type="Texture2D" uid="uid://v177xfvr1rpf" path="res://Assets/Sprites/Interactables/TemplateTeleporter.png" id="2_p5wug"]
+[ext_resource type="Texture2D" uid="uid://bmxkhoi03tug7" path="res://Assets/Sprites/Interactables/Flower.png" id="2_p5wug"]
 [ext_resource type="AudioStream" uid="uid://c33w2aks46464" path="res://Assets/Audio/SFX/Interactables/rosa.wav" id="3_p5wug"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i5u8"]
+atlas = ExtResource("2_p5wug")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyx2l"]
+atlas = ExtResource("2_p5wug")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifi5b"]
+atlas = ExtResource("2_p5wug")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hulin"]
+atlas = ExtResource("2_p5wug")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34og1"]
+atlas = ExtResource("2_p5wug")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b07fu"]
+atlas = ExtResource("2_p5wug")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwmuu"]
+atlas = ExtResource("2_p5wug")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp4je"]
+atlas = ExtResource("2_p5wug")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2xrl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7i5u8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyx2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifi5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hulin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34og1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b07fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwmuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp4je")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i5u8"]
 size = Vector2(4, 4)
@@ -11,8 +75,10 @@ size = Vector2(4, 4)
 script = ExtResource("1_w5866")
 RoseSFX = NodePath("RoseSFX")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_p5wug")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d2xrl")
+autoplay = "default"
+frame_progress = 0.4705502
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7i5u8")

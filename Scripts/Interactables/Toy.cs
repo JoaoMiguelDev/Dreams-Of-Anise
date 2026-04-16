@@ -3,7 +3,7 @@ using System;
 
 public partial class Toy : Area2D
 {
-    [Export] private Sprite2D Sprite;
+    [Export] private AnimatedSprite2D Sprite;
     [Export] private GameManager GameManager;
     public void _on_body_entered(Node2D body)
     {
@@ -18,6 +18,30 @@ public partial class Toy : Area2D
 
     public void SetSprite(int levelid)
     {
-        Sprite.Frame = levelid - 1;
+        // Sprite.Frame = levelid - 1;
+        switch (levelid)
+        {
+            case 1:
+                Sprite.Play("Boneca");
+                break;
+            case 2:
+                Sprite.Play("Cavalo");
+                break;
+            case 3:
+                Sprite.Play("Coelho");
+                break;
+            case 4:
+                Sprite.Play("Espelho");
+                break;
+            case 5:
+                Sprite.Play("Piao");
+                break;
+            case 6:
+                Sprite.Play("Trem");
+                break;
+            default:
+                Sprite.Play("Boneca");
+                break;
+        }
     }
 }

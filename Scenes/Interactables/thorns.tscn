@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c0qj2vx06m0j5"]
 
 [ext_resource type="Script" uid="uid://bncibypulfnms" path="res://Scripts/Interactables/Thorns.cs" id="1_f62q0"]
-[ext_resource type="Texture2D" uid="uid://cdcciwg00l6aa" path="res://Assets/Sprites/Interactables/TemplateThorns.png" id="1_qfmb1"]
+[ext_resource type="Texture2D" uid="uid://diuiq7yw878gc" path="res://Assets/Sprites/Interactables/Thorn.png" id="2_drmuy"]
 [ext_resource type="AudioStream" uid="uid://c3hahsjoboqpm" path="res://Assets/Audio/SFX/Interactables/espinho.wav" id="3_drmuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f62q0"]
@@ -12,7 +12,7 @@ script = ExtResource("1_f62q0")
 SpikeSFX = NodePath("SpikeSFX")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qfmb1")
+texture = ExtResource("2_drmuy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f62q0")

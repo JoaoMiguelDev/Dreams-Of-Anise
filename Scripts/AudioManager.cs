@@ -17,6 +17,11 @@ public partial class AudioManager : Node
 	[Export] private AudioStreamPlayer LateLevelSong;
 	[Export] private AudioStreamPlayer LateLevelSongLoop;
 
+	//Endings songs
+	[Export] private AudioStreamPlayer GoodEndingSong;
+	[Export] private AudioStreamPlayer BadEndingSong;
+	[Export] private AudioStreamPlayer MidEndingSong;
+
  	//UI Sfx
 	[Export] private AudioStreamPlayer UIClick;
 	[Export] private AudioStreamPlayer UIHover;
@@ -90,6 +95,18 @@ public partial class AudioManager : Node
 		LateLevelSongLoop.Play();
 	}
 
+	//Função de tocar as músicas dos finais
+
+	public void PlayBadEndingSong()
+	{
+		BadEndingSong.Play();
+	}
+
+	public void PlayGoodEndingSong()
+	{
+		GoodEndingSong.Play();
+	}
+
 	//Toca os SFX da UI
 
 	public void PlayUIClick()
@@ -129,6 +146,8 @@ public partial class AudioManager : Node
         EarlyLevelSongLoop.Stop();
         LateLevelSong.Stop();
         LateLevelSongLoop.Stop();
+		GoodEndingSong.Stop();
+		BadEndingSong.Stop();
 	}
 
 }

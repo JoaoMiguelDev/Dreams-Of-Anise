@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3ohtxs3cya84"]
 
-[ext_resource type="Texture2D" uid="uid://cykn84rl0ymi5" path="res://Assets/Sprites/Interactables/TemplateCannon.png" id="1_35m8y"]
 [ext_resource type="Script" uid="uid://cd5bdwrfwvhsy" path="res://Scripts/Interactables/Cannon.cs" id="1_s54jb"]
 [ext_resource type="PackedScene" uid="uid://7nitwbvkyuln" path="res://Scenes/Interactables/laser_beam.tscn" id="2_s54jb"]
+[ext_resource type="Texture2D" uid="uid://u3tr6tsyxduk" path="res://Assets/Sprites/Interactables/LaserBall.png" id="2_slyc2"]
 [ext_resource type="AudioStream" uid="uid://le8sd6dxvhb2" path="res://Assets/Audio/SFX/Interactables/laser.wav" id="4_slyc2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slyc2"]
@@ -14,12 +14,13 @@ Laser = NodePath("LaserBeam")
 LaserSFX = NodePath("LaserSFX")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_35m8y")
+texture = ExtResource("2_slyc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_slyc2")
 
 [node name="LaserBeam" parent="." instance=ExtResource("2_s54jb")]
+rotation = 4.712389
 
 [node name="LaserSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_slyc2")

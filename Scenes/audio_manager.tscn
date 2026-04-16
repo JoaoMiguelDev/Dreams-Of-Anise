@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://drnn85htlanf0"]
+[gd_scene load_steps=15 format=3 uid="uid://drnn85htlanf0"]
 
 [ext_resource type="Script" uid="uid://ct0g2eqslk6af" path="res://Scripts/AudioManager.cs" id="1_sm2tf"]
 [ext_resource type="AudioStream" uid="uid://brnfmf2aa4hy4" path="res://Assets/Audio/Music/Menu/menu-anise.ogg" id="2_hhwve"]
@@ -12,8 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://d04b4fi5tauh2" path="res://Assets/Audio/SFX/UI/menu_sair.wav" id="10_pn88s"]
 [ext_resource type="AudioStream" uid="uid://ckc361t1fubjn" path="res://Assets/Audio/SFX/Interactables/colecionavel_coletar.wav" id="11_5nrbi"]
 [ext_resource type="AudioStream" uid="uid://jgnee3pe8mgj" path="res://Assets/Audio/SFX/Interactables/vitoria.wav" id="12_pn88s"]
+[ext_resource type="AudioStream" uid="uid://baxj4ivf4w65h" path="res://Assets/Audio/Music/Level/forsake (bad).ogg" id="13_1bal0"]
+[ext_resource type="AudioStream" uid="uid://d22pph6olijq2" path="res://Assets/Audio/Music/Level/forward (good).ogg" id="14_vhwx7"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("MainMenuSong", "MainMenuSongLoop", "EarlyLevelSong", "EarlyLevelSongLoop", "LateLevelSong", "LateLevelSongLoop", "UIClick", "UIHover", "UIReturn", "PortalSFX", "CollectToy")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("MainMenuSong", "MainMenuSongLoop", "EarlyLevelSong", "EarlyLevelSongLoop", "LateLevelSong", "LateLevelSongLoop", "GoodEndingSong", "BadEndingSong", "MidEndingSong", "UIClick", "UIHover", "UIReturn", "PortalSFX", "CollectToy")]
 script = ExtResource("1_sm2tf")
 MainMenuSong = NodePath("MainMenuSong")
 MainMenuSongLoop = NodePath("MainMenuSongLoop")
@@ -21,6 +23,9 @@ EarlyLevelSong = NodePath("EarlyLevelSong")
 EarlyLevelSongLoop = NodePath("EarlyLevelSongLoop")
 LateLevelSong = NodePath("LateLevelSong")
 LateLevelSongLoop = NodePath("LateLevelSongLoop")
+GoodEndingSong = NodePath("GoodEndingSong")
+BadEndingSong = NodePath("BadEndingSong")
+MidEndingSong = NodePath("MidEndingSong")
 UIClick = NodePath("UIClick")
 UIHover = NodePath("UIHover")
 UIReturn = NodePath("UIReturn")
@@ -29,21 +34,27 @@ CollectToy = NodePath("CollectToy")
 
 [node name="MainMenuSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_hhwve")
+volume_db = -5.0
 
 [node name="MainMenuSongLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qixve")
+volume_db = -5.0
 
 [node name="EarlyLevelSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_0hehx")
+volume_db = -5.0
 
 [node name="EarlyLevelSongLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_mjqhu")
+volume_db = -5.0
 
 [node name="LateLevelSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_5kf6k")
+volume_db = -5.0
 
 [node name="LateLevelSongLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_tnn7g")
+volume_db = -5.0
 
 [node name="UIClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_jmilc")
@@ -60,7 +71,18 @@ stream = ExtResource("11_5nrbi")
 
 [node name="PortalSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_pn88s")
+volume_db = -10.0
 pitch_scale = 2.0
+
+[node name="BadEndingSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_1bal0")
+volume_db = -5.0
+
+[node name="GoodEndingSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_vhwx7")
+volume_db = -5.0
+
+[node name="MidEndingSong" type="AudioStreamPlayer" parent="."]
 
 [connection signal="finished" from="MainMenuSong" to="." method="_on_main_menu_song_finished"]
 [connection signal="finished" from="MainMenuSongLoop" to="." method="_on_main_menu_song_loop_finished"]

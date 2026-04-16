@@ -20,6 +20,7 @@ public partial class LevelManager : Node
 
 		if(CurrentLevel >= Levels.Length) //If the number of levels end, goes back to the first item.
 		{
+			AudioManager.Instance.StopAll();
 			ResetLevelIndex();
 		}
 
