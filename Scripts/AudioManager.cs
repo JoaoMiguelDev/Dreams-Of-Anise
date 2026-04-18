@@ -107,6 +107,11 @@ public partial class AudioManager : Node
 		GoodEndingSong.Play();
 	}
 
+	public void PlayMidEndingSong()
+	{
+		MidEndingSong.Play();
+	}
+
 	//Toca os SFX da UI
 
 	public void PlayUIClick()
@@ -148,6 +153,7 @@ public partial class AudioManager : Node
         LateLevelSongLoop.Stop();
 		GoodEndingSong.Stop();
 		BadEndingSong.Stop();
+		MidEndingSong.Stop();
 	}
 
 }

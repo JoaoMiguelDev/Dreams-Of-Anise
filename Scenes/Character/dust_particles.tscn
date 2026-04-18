@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bscoldpcvlood"]
+
+[sub_resource type="Gradient" id="Gradient_yoffk"]
+colors = PackedColorArray(0.1764706, 0.08627451, 0.17254902, 1, 0.1764706, 0.08627451, 0.17254902, 0)
+
+[node name="DustParticles" type="CPUParticles2D"]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.45
+lifetime_randomness = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(2, 2)
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+color_ramp = SubResource("Gradient_yoffk")

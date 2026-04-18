@@ -9,6 +9,7 @@ public partial class Portal : Area2D
         if(body is Anise anise)
         {
             anise.PauseAnise();
+            anise.Portal();
             
             if(GameManager != null && GameManager.HasToy)
                 GameData.Instance.AddToy();

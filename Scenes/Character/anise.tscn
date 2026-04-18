@@ -1,11 +1,19 @@
-[gd_scene load_steps=26 format=3 uid="uid://4sys6wjl2opi"]
+[gd_scene load_steps=34 format=3 uid="uid://4sys6wjl2opi"]
 
 [ext_resource type="Script" uid="uid://bmk2ym51ov84b" path="res://Scripts/Character/Anise.cs" id="1_ub3si"]
+[ext_resource type="Shader" uid="uid://73i53rc08mc5" path="res://Assets/HitFlash.gdshader" id="2_3wlsy"]
 [ext_resource type="Texture2D" uid="uid://c7uk6bxm62ibj" path="res://Assets/Sprites/Character/AniseDeathTemplate.png" id="2_msbye"]
+[ext_resource type="PackedScene" uid="uid://bscoldpcvlood" path="res://Scenes/Character/dust_particles.tscn" id="2_u8sf6"]
 [ext_resource type="AudioStream" uid="uid://bfaafqgyi67b6" path="res://Assets/Audio/SFX/Anise/passo.wav" id="3_5u1y0"]
 [ext_resource type="Texture2D" uid="uid://clioaqvxp3f5d" path="res://Assets/Sprites/Character/AniseIdle2.png" id="3_yose1"]
 [ext_resource type="Texture2D" uid="uid://dfkmko3spiddd" path="res://Assets/Sprites/Character/AniseDash2.png" id="4_3wlsy"]
 [ext_resource type="AudioStream" uid="uid://dn248hiw0t11" path="res://Assets/Audio/SFX/Anise/morte.wav" id="6_yose1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8sf6"]
+resource_local_to_scene = true
+shader = ExtResource("2_3wlsy")
+shader_parameter/HitFlashColor = Color(0.78431374, 0.7137255, 0.80784315, 1)
+shader_parameter/HitFlashOn = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8sf6"]
 atlas = ExtResource("2_msbye")
@@ -147,7 +155,82 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isa4f"]
 size = Vector2(8, 8)
 
-[node name="Anise" type="CharacterBody2D" node_paths=PackedStringArray("Up", "Down", "Left", "Right", "Sprite", "WalkSFX", "DeathSFX")]
+[sub_resource type="Animation" id="Animation_p1alc"]
+resource_name = "Hit"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/HitFlashOn")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_crh67"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/HitFlashOn")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3wlsy"]
+resource_name = "Teleport"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/HitFlashOn")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_u8sf6"]
+resource_name = "Portal"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/HitFlashOn")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eparq"]
+_data = {
+&"Hit": SubResource("Animation_p1alc"),
+&"Portal": SubResource("Animation_u8sf6"),
+&"RESET": SubResource("Animation_crh67"),
+&"Teleport": SubResource("Animation_3wlsy")
+}
+
+[node name="Anise" type="CharacterBody2D" node_paths=PackedStringArray("Up", "Down", "Left", "Right", "Sprite", "WalkSFX", "DeathSFX", "HitFlashAnim")]
+z_index = 5
 script = ExtResource("1_ub3si")
 Up = NodePath("Up")
 Down = NodePath("Down")
@@ -156,12 +239,15 @@ Right = NodePath("Right")
 Sprite = NodePath("AnimatedSprite2D")
 WalkSFX = NodePath("WalkSFX")
 DeathSFX = NodePath("DeathSFX")
+HitFlashAnim = NodePath("HitFlashAnimation")
+DustParticles = ExtResource("2_u8sf6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_u8sf6")
 sprite_frames = SubResource("SpriteFrames_50q8y")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.17950092
+frame_progress = 0.019534266
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_isa4f")
@@ -191,3 +277,8 @@ stream = ExtResource("3_5u1y0")
 
 [node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_yose1")
+
+[node name="HitFlashAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eparq")
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3ohtxs3cya84"]
+[gd_scene load_steps=7 format=3 uid="uid://d3ohtxs3cya84"]
 
 [ext_resource type="Script" uid="uid://cd5bdwrfwvhsy" path="res://Scripts/Interactables/Cannon.cs" id="1_s54jb"]
 [ext_resource type="PackedScene" uid="uid://7nitwbvkyuln" path="res://Scenes/Interactables/laser_beam.tscn" id="2_s54jb"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slyc2"]
 size = Vector2(14, 14)
+
+[sub_resource type="Gradient" id="Gradient_slyc2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [node name="Cannon" type="StaticBody2D" node_paths=PackedStringArray("Laser", "LaserSFX")]
 script = ExtResource("1_s54jb")
@@ -17,6 +20,7 @@ LaserSFX = NodePath("LaserSFX")
 texture = ExtResource("2_slyc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_slyc2")
 
 [node name="LaserBeam" parent="." instance=ExtResource("2_s54jb")]
@@ -24,3 +28,18 @@ rotation = 4.712389
 
 [node name="LaserSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_slyc2")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 16
+randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+radial_accel_max = 10.0
+scale_amount_max = 2.0
+color = Color(0.78431374, 0.7137255, 0.80784315, 1)
+color_ramp = SubResource("Gradient_slyc2")

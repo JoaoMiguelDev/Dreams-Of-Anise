@@ -1,7 +1,8 @@
-[gd_scene load_steps=58 format=3 uid="uid://6illp1uqybju"]
+[gd_scene load_steps=59 format=3 uid="uid://6illp1uqybju"]
 
 [ext_resource type="Script" uid="uid://che74isyum6nm" path="res://Scripts/Interactables/Toy.cs" id="1_oevwj"]
 [ext_resource type="Texture2D" uid="uid://cwccfp0jlm3y" path="res://Assets/Sprites/Interactables/toy-boneca.png" id="2_jpvrx"]
+[ext_resource type="PackedScene" uid="uid://c7xqvcq7hjci4" path="res://Scenes/Interactables/toy_explosion.tscn" id="2_leumv"]
 [ext_resource type="Texture2D" uid="uid://bhu8i52wxt2d5" path="res://Assets/Sprites/Interactables/toy-horsel.png" id="3_leumv"]
 [ext_resource type="Texture2D" uid="uid://t7ap3yikafvr" path="res://Assets/Sprites/Interactables/toy-coelho.png" id="4_a17ey"]
 [ext_resource type="Texture2D" uid="uid://b6i57ug5avkvu" path="res://Assets/Sprites/Interactables/toy-espelho.png" id="5_s03ye"]
@@ -383,6 +384,7 @@ size = Vector2(10, 10)
 [node name="Toy" type="Area2D" node_paths=PackedStringArray("Sprite")]
 script = ExtResource("1_oevwj")
 Sprite = NodePath("AnimatedSprite2D")
+CollectParticles = ExtResource("2_leumv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f8o6h")

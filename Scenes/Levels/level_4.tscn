@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dw4bs8u5h47r6"]
+[gd_scene load_steps=25 format=4 uid="uid://dw4bs8u5h47r6"]
 
 [ext_resource type="Script" uid="uid://bqotu61auceeo" path="res://Scripts/Levels/Level4.cs" id="1_xq0e5"]
 [ext_resource type="Script" uid="uid://bxpv0l8828d0e" path="res://Scripts/GameManager.cs" id="2_6grq2"]
@@ -288,6 +288,25 @@ texture = ExtResource("7_3osng")
 sources/0 = SubResource("TileSetAtlasSource_eb4ip")
 sources/1 = SubResource("TileSetAtlasSource_xpmn3")
 
+[sub_resource type="Gradient" id="Gradient_3osng"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eb4ip"]
+gradient = SubResource("Gradient_3osng")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ecora"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(320, 180, 1)
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+color = Color(0.78431374, 0.7137255, 0.80784315, 1)
+color_ramp = SubResource("GradientTexture1D_eb4ip")
+
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_xq0e5")
 
@@ -373,3 +392,11 @@ position = Vector2(168, 168)
 
 [node name="PauseMenu" parent="PauseLayer" node_paths=PackedStringArray("GameManager") instance=ExtResource("11_3asqb")]
 GameManager = NodePath("../../GameManager")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -50
+position = Vector2(223, 160)
+amount = 30
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ecora")

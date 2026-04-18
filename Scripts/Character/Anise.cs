@@ -10,6 +10,8 @@ public partial class Anise : CharacterBody2D
 	[Export] private AnimatedSprite2D Sprite;
 	[Export] private AudioStreamPlayer2D WalkSFX;
 	[Export] private AudioStreamPlayer2D DeathSFX;
+	[Export] private AnimationPlayer HitFlashAnim;
+	[Export] private PackedScene DustParticles;
 	[Signal] public delegate void ActionTakenEventHandler();
 	private float MoveSpeed = 12f;
 	private Vector2 LastDirection = Vector2.Down;
@@ -73,6 +75,7 @@ public partial class Anise : CharacterBody2D
         }
 
     	IsMoving = true;
+		EmitDust();
 		WalkSFX.Play();
 		ActionTakenEmitSignal();
     	TargetPosition = GlobalPosition + direction * TileSize;
@@ -123,6 +126,31 @@ public partial class Anise : CharacterBody2D
 		IsMoving = false;
 		SetPhysicsProcess(false);
 		Sprite.Animation = "Idle";
+	}
+
+	public void HitFlash()
+	{
+		HitFlashAnim.Play("Hit");
+	}
+
+	public void Teleport()
+	{
+		HitFlashAnim.Play("Teleport");
+	}
+
+	public void Portal()
+	{
+		HitFlashAnim.Play("Portal");
+	}
+
+	private void EmitDust()
+	{
+	    CpuParticles2D dust = DustParticles.Instantiate<CpuParticles2D>();
+	    GetParent().AddChild(dust);
+	    dust.GlobalPosition = GlobalPosition;
+	    dust.Emitting = true;
+	   
+	    dust.Finished += dust.QueueFree;
 	}
 
 }

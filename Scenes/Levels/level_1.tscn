@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dmpi2v7jc6ilt"]
+[gd_scene load_steps=25 format=4 uid="uid://dmpi2v7jc6ilt"]
 
 [ext_resource type="Texture2D" uid="uid://d1mw3n24oxs5n" path="res://Assets/Sprites/Tiles/TemplateTile.png" id="1_4dpyx"]
 [ext_resource type="Script" uid="uid://tp8lsjkt05pb" path="res://Scripts/Levels/Level1.cs" id="1_xgxfi"]
@@ -288,6 +288,25 @@ texture = ExtResource("7_k2mw1")
 sources/0 = SubResource("TileSetAtlasSource_k2mw1")
 sources/1 = SubResource("TileSetAtlasSource_tjl6l")
 
+[sub_resource type="Gradient" id="Gradient_k2mw1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tjl6l"]
+gradient = SubResource("Gradient_k2mw1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3628d"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(320, 180, 1)
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+color = Color(0.78431374, 0.7137255, 0.80784315, 1)
+color_ramp = SubResource("GradientTexture1D_tjl6l")
+
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_xgxfi")
 
@@ -377,3 +396,11 @@ GameManager = NodePath("../../GameManager")
 
 [node name="PauseMenu" parent="PauseLayer" node_paths=PackedStringArray("GameManager") instance=ExtResource("11_hwvp3")]
 GameManager = NodePath("../../GameManager")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -50
+position = Vector2(52, -35)
+amount = 30
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3628d")

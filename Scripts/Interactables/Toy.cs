@@ -5,6 +5,7 @@ public partial class Toy : Area2D
 {
     [Export] private AnimatedSprite2D Sprite;
     [Export] private GameManager GameManager;
+    [Export] private PackedScene CollectParticles;
     public void _on_body_entered(Node2D body)
     {
         if(body is Anise)
@@ -12,6 +13,7 @@ public partial class Toy : Area2D
             // GameData.Instance.AddToy();
             AudioManager.Instance.PlayCollectToy();
             GameManager.HasToy = true;
+            EmitCollectParticle();
             QueueFree();
         }
     }
@@ -43,5 +45,15 @@ public partial class Toy : Area2D
                 Sprite.Play("Boneca");
                 break;
         }
+    }
+
+    private void EmitCollectParticle()
+    {
+	    CpuParticles2D explosion = CollectParticles.Instantiate<CpuParticles2D>();
+	    GetParent().AddChild(explosion);
+	    explosion.GlobalPosition = GlobalPosition;
+	    explosion.Emitting = true;
+	   
+	    explosion.Finished += explosion.QueueFree;        
     }
 }

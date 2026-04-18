@@ -50,7 +50,9 @@ public partial class GameManager : Node
 	{
 		if(Camera != null)
 			Camera.Shake(8);
-		ConsumeAction(); //It will do the same thing as Consume action for now, but will be updated to shake screen and do more stuff
+		
+		Player.HitFlash();
+		ConsumeAction();
 		CheckCurrentState();
 	}
 
@@ -72,6 +74,7 @@ public partial class GameManager : Node
 	public void KillPlayer()
 	{
 		Camera.Shake(8);
+		Player.HitFlash();
 		Player.Die();
 	}
 

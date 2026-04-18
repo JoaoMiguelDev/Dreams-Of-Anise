@@ -7,8 +7,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f62q0"]
 size = Vector2(12, 12)
 
-[node name="Thorns" type="Area2D" node_paths=PackedStringArray("SpikeSFX")]
+[node name="Thorns" type="Area2D" node_paths=PackedStringArray("Sprite", "SpikeSFX")]
 script = ExtResource("1_f62q0")
+Sprite = NodePath("Sprite2D")
 SpikeSFX = NodePath("SpikeSFX")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

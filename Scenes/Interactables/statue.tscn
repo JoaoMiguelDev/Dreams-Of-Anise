@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://psmdhubjpoye"]
+[gd_scene load_steps=6 format=3 uid="uid://psmdhubjpoye"]
 
 [ext_resource type="Script" uid="uid://cojnxrjfxckq6" path="res://Scripts/Interactables/Statue.cs" id="1_dovom"]
 [ext_resource type="Texture2D" uid="uid://ccb130vj50rjd" path="res://Assets/Sprites/Interactables/TemplateStatue.png" id="2_7huee"]
+[ext_resource type="PackedScene" uid="uid://bscoldpcvlood" path="res://Scenes/Character/dust_particles.tscn" id="2_hw2lv"]
 [ext_resource type="AudioStream" uid="uid://vm87qgshnvsd" path="res://Assets/Audio/SFX/Interactables/mover_rocha.wav" id="3_7huee"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hw2lv"]
@@ -15,6 +16,7 @@ Down = NodePath("Down")
 Left = NodePath("Left")
 Right = NodePath("Right")
 PushSFX = NodePath("PushSFX")
+DustParticles = ExtResource("2_hw2lv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7huee")

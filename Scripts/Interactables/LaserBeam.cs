@@ -16,6 +16,7 @@ public partial class LaserBeam : RayCast2D
         _line = new Line2D();
         _line.Width = 4f;
         _line.DefaultColor = new Color("#C8B6CE");
+        _line.BeginCapMode = Line2D.LineCapMode.Round;
         AddChild(_line);
 
         _line.AddPoint(Vector2.Zero);

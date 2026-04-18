@@ -29,6 +29,8 @@ public partial class End : Node2D
 		}
 		else
 		{
+			AudioManager.Instance.StopAll();
+			AudioManager.Instance.PlayMidEndingSong();
 			FinalMessage.Position = new Vector2(199,158);
 			FinalMessage.Text = "Anise came back?";
 		}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://u3oqj4ehea0a"]
+[gd_scene load_steps=14 format=3 uid="uid://u3oqj4ehea0a"]
 
 [ext_resource type="Script" uid="uid://boemmbvkch3xa" path="res://Scripts/Interactables/Portal.cs" id="1_er6md"]
 [ext_resource type="Texture2D" uid="uid://b3f6al0r7tirm" path="res://Assets/Sprites/Interactables/Portal.png" id="2_er6md"]
@@ -70,6 +70,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_er6md"]
 size = Vector2(4, 4)
 
+[sub_resource type="Gradient" id="Gradient_er6md"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
 [node name="Portal" type="Area2D"]
 script = ExtResource("1_er6md")
 
@@ -80,5 +83,17 @@ frame_progress = 0.13103393
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_er6md")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+scale_amount_max = 3.0
+color = Color(0.78431374, 0.7137255, 0.80784315, 1)
+color_ramp = SubResource("Gradient_er6md")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
