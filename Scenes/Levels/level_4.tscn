@@ -319,7 +319,7 @@ HUD = NodePath("../HUDLayer/HUD")
 Camera = NodePath("../ShakyCamera")
 
 [node name="ShakyCamera" parent="." instance=ExtResource("3_slbhm")]
-position = Vector2(223, 155)
+position = Vector2(223, 139)
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -395,7 +395,7 @@ GameManager = NodePath("../../GameManager")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = -50
-position = Vector2(223, 160)
+position = Vector2(224, 140)
 amount = 30
 lifetime = 3.0
 randomness = 1.0

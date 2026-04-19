@@ -19,7 +19,7 @@ public partial class GameManager : Node
 		LvlId = Lvl.GetLevelId();
 		NumOfActions = Lvl.GetNumOfActions();
 
-		HUD.SetLevelInfo(LvlId.ToString());
+		HUD.SetLevelInfo(ConvertToRoman(LvlId));
 		HUD.SetActionInfo(NumOfActions.ToString());
 
 		if(Toy != null)
@@ -48,6 +48,7 @@ public partial class GameManager : Node
 
 	public void TakeDamage()
 	{
+		HUD.HUDFlashAnimation();
 		if(Camera != null)
 			Camera.Shake(8);
 		
@@ -76,6 +77,27 @@ public partial class GameManager : Node
 		Camera.Shake(8);
 		Player.HitFlash();
 		Player.Die();
+	}
+
+	public string ConvertToRoman(int number)
+	{
+	    switch(number)
+    	{
+    	    case 1:
+    	        return "I";
+    	    case 2:
+    	        return "II";
+    	    case 3:
+    	        return "III";
+    	    case 4:
+    	        return "IV";
+    	    case 5:
+    	        return "V";
+    	    case 6:
+    	        return "VI";
+    	    default:
+    	        return "I";
+    	}		
 	}
 
 }

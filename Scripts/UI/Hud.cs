@@ -5,6 +5,7 @@ public partial class Hud : Control
 {
 	[Export] private Label LevelInfo;
 	[Export] private Label ActionInfo;
+	[Export] private AnimationPlayer HUDFlash;
 
 	public void SetLevelInfo(string info)
 	{
@@ -17,5 +18,10 @@ public partial class Hud : Control
 			ActionInfo.Text = "X";
 		else
 			ActionInfo.Text = info;
+	}
+
+	public void HUDFlashAnimation()
+	{
+		HUDFlash.Play("UIFlashAnimation");
 	}
 }

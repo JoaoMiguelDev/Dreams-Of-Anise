@@ -9,6 +9,7 @@ public partial class Statue : CharacterBody2D
 	[Export] private RayCast2D Right;
 	[Export] private AudioStreamPlayer2D PushSFX;
 	[Export] private PackedScene DustParticles;
+	[Export] private Sprite2D Sprite;
 	private float MoveSpeed = 8f;
 	private Vector2 TileSize = new Vector2(16,16);
 	private bool IsMoving = false;
@@ -17,6 +18,8 @@ public partial class Statue : CharacterBody2D
 	public override void _Ready()
     {
         TargetPosition = GlobalPosition;
+		int frame = (int)(GD.Randi() % 2);
+		Sprite.Frame = frame;
     }
 
     public override void _PhysicsProcess(double delta)

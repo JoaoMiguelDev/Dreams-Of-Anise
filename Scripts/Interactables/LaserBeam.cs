@@ -6,6 +6,7 @@ public partial class LaserBeam : RayCast2D
     [Export] public float MaxLength = 1000.0f;
     [Export] public float CastSpeed = 400.0f;
     [Export] public GameManager GameManager;
+    [Export] private CpuParticles2D EndParticles;
     [Signal] public delegate void PlayerHitEventHandler();
     private Line2D _line;
     private float _currentLength = 0f;
@@ -54,6 +55,8 @@ public partial class LaserBeam : RayCast2D
 
         _line.SetPointPosition(0, Vector2.Zero);
         _line.SetPointPosition(1, endPoint);
+
+        EndParticles.Position = endPoint;
     }
 
     public void PlayerHitEmitSignal()

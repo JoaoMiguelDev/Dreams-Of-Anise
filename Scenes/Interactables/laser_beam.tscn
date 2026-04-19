@@ -1,7 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://7nitwbvkyuln"]
+[gd_scene load_steps=3 format=3 uid="uid://7nitwbvkyuln"]
 
 [ext_resource type="Script" uid="uid://bkenttrrdqpef" path="res://Scripts/Interactables/LaserBeam.cs" id="1_vhk84"]
 
-[node name="LaserBeam" type="RayCast2D"]
+[sub_resource type="Gradient" id="Gradient_vhk84"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[node name="LaserBeam" type="RayCast2D" node_paths=PackedStringArray("EndParticles")]
 script = ExtResource("1_vhk84")
 CastSpeed = 800.0
+EndParticles = NodePath("CPUParticles2D")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 8
+amount = 16
+randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+radial_accel_max = 10.0
+scale_amount_max = 2.0
+color = Color(0.78431374, 0.7137255, 0.80784315, 1)
+color_ramp = SubResource("Gradient_vhk84")

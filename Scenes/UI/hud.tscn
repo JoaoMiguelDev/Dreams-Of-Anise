@@ -1,10 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://pp35s7g2oh5t"]
+[gd_scene load_steps=8 format=3 uid="uid://pp35s7g2oh5t"]
 
 [ext_resource type="Script" uid="uid://dch4my1ibbca" path="res://Scripts/UI/Hud.cs" id="1_fdl0h"]
-[ext_resource type="Texture2D" uid="uid://bkra80egr2l2q" path="res://Assets/Sprites/UI/TemplateCircle.png" id="2_8glcj"]
+[ext_resource type="Texture2D" uid="uid://cwoviteg7rq5e" path="res://Assets/Sprites/UI/step counter.png" id="2_8glcj"]
 [ext_resource type="FontFile" uid="uid://d34o3ag5v6w4t" path="res://Assets/Fonts/PixelOperator8.ttf" id="3_vsu76"]
+[ext_resource type="Texture2D" uid="uid://4wcp86jw5k8i" path="res://Assets/Sprites/UI/level indicator.png" id="4_vsu76"]
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("LevelInfo", "ActionInfo")]
+[sub_resource type="Animation" id="Animation_8glcj"]
+resource_name = "UIFlashAnimation"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/LevelMargin/TextureRect/Actions:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.78431374, 0.7137255, 0.80784315, 1), Color(0.1764706, 0.08627451, 0.17254902, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vsu76"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/LevelMargin/TextureRect/Actions:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.1764706, 0.08627451, 0.17254902, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsu76"]
+_data = {
+&"RESET": SubResource("Animation_vsu76"),
+&"UIFlashAnimation": SubResource("Animation_8glcj")
+}
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("LevelInfo", "ActionInfo", "HUDFlash")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,8 +50,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fdl0h")
-LevelInfo = NodePath("HBoxContainer/ActionMargin/Level")
-ActionInfo = NodePath("HBoxContainer/LevelMargin/Actions")
+LevelInfo = NodePath("HBoxContainer/ActionMargin/TextureRect/Level")
+ActionInfo = NodePath("HBoxContainer/LevelMargin/TextureRect/Actions")
+HUDFlash = NodePath("HUDFlashAnimation")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -24,21 +63,24 @@ offset_left = -91.0
 offset_right = 91.0
 offset_bottom = 93.0
 grow_horizontal = 2
-theme_override_constants/separation = 425
+theme_override_constants/separation = 330
 
 [node name="LevelMargin" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 36
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 10
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/LevelMargin"]
 layout_mode = 2
 texture = ExtResource("2_8glcj")
 stretch_mode = 4
 
-[node name="Actions" type="Label" parent="HBoxContainer/LevelMargin"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="Actions" type="Label" parent="HBoxContainer/LevelMargin/TextureRect"]
+layout_mode = 0
+offset_top = 62.0
+offset_right = 120.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.1764706, 0.08627451, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("3_vsu76")
 theme_override_font_sizes/font_size = 24
 text = "20"
@@ -46,20 +88,22 @@ horizontal_alignment = 1
 
 [node name="ActionMargin" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 36
-theme_override_constants/margin_right = 25
+theme_override_constants/margin_top = 10
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/ActionMargin"]
 layout_mode = 2
-texture = ExtResource("2_8glcj")
+texture = ExtResource("4_vsu76")
 stretch_mode = 4
 
-[node name="Level" type="Label" parent="HBoxContainer/ActionMargin"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="Level" type="Label" parent="HBoxContainer/ActionMargin/TextureRect"]
+layout_mode = 0
+offset_top = 63.0
+offset_right = 148.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0.1764706, 0.08627451, 0.17254902, 1)
 theme_override_fonts/font = ExtResource("3_vsu76")
 theme_override_font_sizes/font_size = 24
-text = "50"
+text = "X"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -87,3 +131,8 @@ theme_override_font_sizes/font_size = 8
 text = "- R to restart -"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="HUDFlashAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vsu76")
+}

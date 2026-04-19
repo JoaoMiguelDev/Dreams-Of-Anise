@@ -13,7 +13,7 @@ config_version=5
 config/name="DreamsOfAnise"
 run/main_scene="uid://dmvpdr8pjom4d"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://brx82c0i74ks3"
 
 [autoload]
 
@@ -28,6 +28,7 @@ window/size/viewport_width=620
 window/size/viewport_height=320
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
+mouse_cursor/custom_image="uid://fapyuu5h6pk3"
 
 [dotnet]
 

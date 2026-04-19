@@ -1,9 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmvpdr8pjom4d"]
+[gd_scene load_steps=12 format=3 uid="uid://dmvpdr8pjom4d"]
 
 [ext_resource type="FontFile" uid="uid://d34o3ag5v6w4t" path="res://Assets/Fonts/PixelOperator8.ttf" id="1_5wsvm"]
 [ext_resource type="Script" uid="uid://c3pdf3q8daesf" path="res://Scripts/UI/MainMenu.cs" id="1_i2xx2"]
 [ext_resource type="FontFile" uid="uid://cphamq0lhkiq0" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="2_o14dv"]
 [ext_resource type="AudioStream" uid="uid://cydwhj7td3kua" path="res://Assets/Audio/SFX/UI/menu_entrar.wav" id="4_u7lva"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7lva"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqme5"]
+bg_color = Color(1, 1, 1, 0)
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrfpk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k33u3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pqbp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrjdf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gih0s"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("StartMenu")]
 layout_mode = 3
@@ -22,7 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.5408662, 0.30746716, 0.5727106, 1)
+color = Color(0.25490198, 0.15294118, 0.32156864, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -33,6 +64,7 @@ theme_override_constants/margin_top = 30
 
 [node name="MainTitle" type="Label" parent="MarginContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_o14dv")
 theme_override_font_sizes/font_size = 32
 text = "Dreams Of
@@ -43,8 +75,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_top = -108.0
+offset_right = 200.0
 grow_vertical = 0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_bottom = 20
@@ -55,21 +87,47 @@ theme_override_constants/separation = 8
 
 [node name="PlayButton" type="Button" parent="MarginContainer2/ButtonContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.78431374, 0.7137255, 0.80784315, 1)
+theme_override_colors/font_pressed_color = Color(0.78431374, 0.7137255, 0.80784315, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.25490198, 0.15294118, 0.32156864, 1)
 theme_override_fonts/font = ExtResource("1_5wsvm")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_u7lva")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wqme5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mrfpk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_k33u3")
 text = "Play"
+alignment = 0
 
 [node name="CreditsButton" type="Button" parent="MarginContainer2/ButtonContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.78431374, 0.7137255, 0.80784315, 1)
+theme_override_colors/font_pressed_color = Color(0.78431374, 0.7137255, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("1_5wsvm")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4pqbp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wqme5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mrfpk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lrjdf")
 text = "Credits"
+alignment = 0
 
 [node name="QuitButton" type="Button" parent="MarginContainer2/ButtonContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.78431374, 0.7137255, 0.80784315, 1)
+theme_override_colors/font_pressed_color = Color(0.78431374, 0.7137255, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("1_5wsvm")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wqme5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mrfpk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mrfpk")
 text = "Quit"
+alignment = 0
 
 [node name="StartMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_u7lva")

@@ -1,8 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://q22dgkvmjd20"]
+[gd_scene load_steps=8 format=3 uid="uid://q22dgkvmjd20"]
 
 [ext_resource type="Script" uid="uid://2lx2ushfrw6n" path="res://Scripts/UI/PauseMenu.cs" id="1_r2i2h"]
 [ext_resource type="FontFile" uid="uid://cphamq0lhkiq0" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="2_oykix"]
 [ext_resource type="FontFile" uid="uid://d34o3ag5v6w4t" path="res://Assets/Fonts/PixelOperator8.ttf" id="3_kdnb7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2i2h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oykix"]
+bg_color = Color(1, 1, 1, 0)
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdnb7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_702e2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 3.0
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -22,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.5411765, 0.30588236, 0.57254905, 0.60784316)
+color = Color(0.25490198, 0.15294118, 0.32156864, 0.60784316)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -55,25 +74,40 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.78431374, 0.7137255, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("3_kdnb7")
-text = "Resume"
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2i2h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oykix")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kdnb7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_702e2")
+text = "Resume   "
 
 [node name="Retry" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.78431374, 0.7137255, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("3_kdnb7")
-text = " Retry "
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2i2h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oykix")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kdnb7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_702e2")
+text = "Retry   "
+alignment = 0
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.78431374, 0.7137255, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("3_kdnb7")
-text = "  Quit  "
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2i2h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oykix")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kdnb7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_702e2")
+text = "Quit   "
+alignment = 0
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
