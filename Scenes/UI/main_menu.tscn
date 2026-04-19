@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmvpdr8pjom4d"]
+[gd_scene load_steps=13 format=3 uid="uid://dmvpdr8pjom4d"]
 
 [ext_resource type="FontFile" uid="uid://d34o3ag5v6w4t" path="res://Assets/Fonts/PixelOperator8.ttf" id="1_5wsvm"]
 [ext_resource type="Script" uid="uid://c3pdf3q8daesf" path="res://Scripts/UI/MainMenu.cs" id="1_i2xx2"]
+[ext_resource type="Texture2D" uid="uid://dpiypbxv65vk7" path="res://Assets/Sprites/UI/AniseMainMenu.png" id="2_mrfpk"]
 [ext_resource type="FontFile" uid="uid://cphamq0lhkiq0" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="2_o14dv"]
 [ext_resource type="AudioStream" uid="uid://cydwhj7td3kua" path="res://Assets/Audio/SFX/UI/menu_entrar.wav" id="4_u7lva"]
 
@@ -46,14 +47,29 @@ grow_vertical = 2
 script = ExtResource("1_i2xx2")
 StartMenu = NodePath("StartMenu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.25490198, 0.15294118, 0.32156864, 1)
+texture = ExtResource("2_mrfpk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -135.0
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(300, 130)
+layout_mode = 1
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

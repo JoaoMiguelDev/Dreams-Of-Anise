@@ -1,12 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://4sys6wjl2opi"]
+[gd_scene load_steps=40 format=3 uid="uid://4sys6wjl2opi"]
 
 [ext_resource type="Script" uid="uid://bmk2ym51ov84b" path="res://Scripts/Character/Anise.cs" id="1_ub3si"]
 [ext_resource type="Shader" uid="uid://73i53rc08mc5" path="res://Assets/HitFlash.gdshader" id="2_3wlsy"]
-[ext_resource type="Texture2D" uid="uid://c7uk6bxm62ibj" path="res://Assets/Sprites/Character/AniseDeathTemplate.png" id="2_msbye"]
 [ext_resource type="PackedScene" uid="uid://bscoldpcvlood" path="res://Scenes/Character/dust_particles.tscn" id="2_u8sf6"]
 [ext_resource type="AudioStream" uid="uid://bfaafqgyi67b6" path="res://Assets/Audio/SFX/Anise/passo.wav" id="3_5u1y0"]
 [ext_resource type="Texture2D" uid="uid://clioaqvxp3f5d" path="res://Assets/Sprites/Character/AniseIdle2.png" id="3_yose1"]
 [ext_resource type="Texture2D" uid="uid://dfkmko3spiddd" path="res://Assets/Sprites/Character/AniseDash2.png" id="4_3wlsy"]
+[ext_resource type="Texture2D" uid="uid://twpt2vesnaed" path="res://Assets/Sprites/Character/AniseDeath.png" id="4_u8sf6"]
 [ext_resource type="AudioStream" uid="uid://dn248hiw0t11" path="res://Assets/Audio/SFX/Anise/morte.wav" id="6_yose1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u8sf6"]
@@ -15,13 +15,37 @@ shader = ExtResource("2_3wlsy")
 shader_parameter/HitFlashColor = Color(0.78431374, 0.7137255, 0.80784315, 1)
 shader_parameter/HitFlashOn = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u8sf6"]
-atlas = ExtResource("2_msbye")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1alc"]
+atlas = ExtResource("4_u8sf6")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p1alc"]
-atlas = ExtResource("2_msbye")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv5r3"]
+atlas = ExtResource("4_u8sf6")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd102"]
+atlas = ExtResource("4_u8sf6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gv6g"]
+atlas = ExtResource("4_u8sf6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12dol"]
+atlas = ExtResource("4_u8sf6")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0lhw"]
+atlas = ExtResource("4_u8sf6")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb456"]
+atlas = ExtResource("4_u8sf6")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_331tp"]
+atlas = ExtResource("4_u8sf6")
+region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_crh67"]
 atlas = ExtResource("3_yose1")
@@ -87,14 +111,32 @@ region = Rect2(112, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u8sf6")
+"texture": SubResource("AtlasTexture_p1alc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p1alc")
+"texture": SubResource("AtlasTexture_vv5r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd102")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gv6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12dol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0lhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb456")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_331tp")
 }],
 "loop": false,
 "name": &"Death",
-"speed": 1.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -245,9 +287,8 @@ DustParticles = ExtResource("2_u8sf6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_u8sf6")
 sprite_frames = SubResource("SpriteFrames_50q8y")
-animation = &"Idle"
+animation = &"Death"
 autoplay = "Idle"
-frame_progress = 0.019534266
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_isa4f")
